@@ -13,17 +13,17 @@ chapter: false
 {{% /notice %}}
 
 ### Student Information:
-&emsp; **Full Name:** Nguyen Van A
+&emsp; **Full Name:** Huynh Minh Quan
 
-&emsp; **Phone Number:** 0989888999 
+&emsp; **Phone Number:** 0903845962
 
-&emsp; **Email:** Anguyenvan@gmail.com
+&emsp; **Email:** hminh.quaan@gmail.com
 
-&emsp; **University:** Ho Chi Minh City University of Technology and Education
+&emsp; **University:** Sai Gon University
 
 &emsp; **Major:** Information Technology
 
-&emsp; **Class:** AWS082025
+&emsp; **Class:** DCT122C3
 
 &emsp; **Internship Company:** Amazon Web Services Viet Nam Company Limited
 
