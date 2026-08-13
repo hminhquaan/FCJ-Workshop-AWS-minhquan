@@ -6,121 +6,95 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# Agent Forge – Deep Dive (Day 2): Memory, Evaluation, and Observability for AI Agents
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+### Purpose of the Event
 
-### Event Objectives
+The second session of the **AWS FCAJ Agent Forge – Deep Dive** workshop was organized by the First Cloud AI Journey (FCAJ) community together with AWS engineers. At an advanced (L300) level, the workshop focused on building AI Agents that can run in real enterprise environments.
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+The session was designed to help participants:
 
-### Speakers
+- Strengthen their understanding of memory management, response quality evaluation, system monitoring, and performance optimization.
+- Get hands-on experience turning a basic AI Agent into a production-ready Agentic AI system.
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+### List of Speakers
 
-### Key Highlights
+- **Hieu** - Co-head of the FCAJ community, Solution Architect at AWS Vietnam.
+- **Hai Anh** - Cloud Consultant at Chiase Pacific, leading the hands-on lab.
+- **Nghia Tran** - Agentic AI Solution Architect.
+- **Anh Pham** - Cloud Consultant at G-AsiaPacific Vietnam.
 
-#### Identifying the drawbacks of legacy application architecture
+### Workshop Format
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+This was a **3-day workshop series** designed to take participants from the fundamentals all the way to deploying AI Agents in production using Amazon Bedrock AgentCore.
 
-#### Transitioning to modern application architecture – Microservices
+- **Day 1 (01/08): AgentCore Foundations** — overview of the AgentCore architecture (Runtime, Gateway, Identity).
+- **Day 2 (08/08): Memory, Evaluations, Observability & Optimization** — managing memory, evaluating agent quality, monitoring the system, and tuning performance.
+- **Day 3 (15/08): DevOps, Policies & Production Best Practices** — DevOps for agents, policies, security, and production best practices.
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+## Key Highlights
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+### Agent Memory
 
-#### Domain-Driven Design (DDD)
+Agent Memory helps an Agent overcome the limits of the context window by keeping conversation context and personalizing the user experience.
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+**Short-term Memory** stores the full conversation history as raw messages, allowing the Agent to follow the current flow and respond consistently. The system also supports branching, similar to how Git creates branches.
 
-#### Event-Driven Architecture
+**Long-term Memory** works asynchronously, extracting important information and storing it as vectors for later retrieval. The four main strategies are:
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+- **Summary:** summarize and compress the conversation.
+- **User Preference:** store user preferences.
+- **Semantic:** store domain knowledge.
+- **Episodic:** record past decisions or events.
 
-#### Compute Evolution
+**Namespace** acts like a hierarchical folder structure to isolate data by strategy, actor, or session. Combined with semantic search and similarity ranking, the Agent can retrieve the right information while reducing token usage and improving response time.
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+### Observability
 
-#### Amazon Q Developer
+The workshop emphasized: *"You cannot fix what you cannot see."* Observability uses the OpenTelemetry standard to collect three types of data:
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+- **Logs:** record request details, connection errors, system errors, or terminal output.
+- **Traces:** follow the full journey of a request from prompt to response, including tool calls.
+- **Metrics:** measure token consumption, error rates, and response latency.
 
-### Key Takeaways
+These help teams identify the cause of slowness, optimize token cost, and improve user experience.
 
-#### Design Mindset
+### Agent Evaluation
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+A common risk of AI Agents is **hallucination** — producing inaccurate information that sounds confident. To reduce this, the system provides 13 built-in evaluators, such as **correctness** and **helpfulness**.
 
-#### Technical Architecture
+Evaluators are applied at three levels:
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+- **Session level:** evaluate the whole working session.
+- **Trace level:** evaluate the accuracy of a response.
+- **Span level:** evaluate each processing step, such as a tool call or parameter passing.
 
-#### Modernization Strategy
+Two forms of evaluation are supported. **On-demand** fits the development and testing phase; **Online** monitors agent quality in real time in production. Automated evaluation results still need to be verified by domain experts.
 
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+## What I Learned
 
-### Applying to Work
+### Technical Knowledge
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+- Understood the difference between Short-term and Long-term Memory, especially the synchronous and asynchronous processing.
+- Learned the three pillars of Observability: Logs, Traces, and Metrics, and the role of OpenTelemetry.
+- Understood how automated evaluators assess agent responses against standardized criteria.
+- Learned about Cedar Policy and sandbox mechanisms, and the importance of security when agents execute tasks or test code.
 
-### Event Experience
+### Practical Lessons
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+- Design an AI Agent in small, focused functions before building a complex system.
+- Always prioritize security and access control when an agent accesses resources.
+- Monitor, evaluate, and optimize agents based on real results.
+- Build agents that are easy to scale and maintain.
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+## Experience in the Workshop
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+Taking part in **Day 2 of the AWS FCAJ Agent Forge – Deep Dive** gave me a clear view of how to build and operate AI Agents in an enterprise environment.
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+Through the speakers' presentations and hands-on content, I better understood how to build an effective AI Agent by providing the system with knowledge storage, monitoring, quality evaluation, and strong security mechanisms.
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
+### Photos from the event
 
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
+![Event Photo 1](/images/4-EventParticipated/image001.jpg)
 
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+> **Overall assessment:** Day 2 of the **AWS FCAJ Agent Forge – Deep Dive** provided a solid foundation on **Agentic AI** and **Amazon Bedrock AgentCore**, helping participants go from basic concepts to building and deploying AI Agents in production. The workshop combined theory, examples, and hands-on practice, while emphasizing security, scalability, lifecycle management, and tool integration. It is a highly useful program for anyone who wants to build enterprise-ready AI Agent systems.

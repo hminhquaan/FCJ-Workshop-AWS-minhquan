@@ -1,34 +1,34 @@
 ﻿---
-title: "Worklog Tuáº§n 1"
+title: "Worklog Tuần 1"
 date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
 
-### Má»¥c tiÃªu Tuáº§n 1:
+### Mục tiêu Tuần 1:
 
-* LÃ m quen vá»›i chÆ°Æ¡ng trÃ¬nh thá»±c táº­p vÃ  quy trÃ¬nh lÃ m viá»‡c.
-* KhÃ¡m phÃ¡ cÃ¡c dá»‹ch vá»¥ AWS cÆ¡ báº£n.
-* Thiáº¿t láº­p mÃ´i trÆ°á»ng há»c táº­p vÃ  thá»±c hÃ nh cÆ¡ báº£n.
+* Làm quen với chương trình thực tập và quy trình làm việc.
+* Khám phá các dịch vụ AWS cơ bản.
+* Thiết lập môi trường học tập và thực hành cơ bản.
 
-### Nhiá»‡m vá»¥ trong tuáº§n:
+### Nhiệm vụ trong tuần:
 
-| STT | Nhiá»‡m vá»¥ | NgÃ y báº¯t Ä‘áº§u | NgÃ y hoÃ n thÃ nh | TÃ i liá»‡u tham kháº£o |
+| STT | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | --- | --- | --- | --- | --- |
-| 1 | - Hiá»ƒu má»¥c tiÃªu, ná»™i quy vÃ  káº¿ hoáº¡ch há»c táº­p cá»§a chÆ°Æ¡ng trÃ¬nh | 22/06/2026 | 22/06/2026 | |
-| 2 | - Há»c cÃ¡c dá»‹ch vá»¥ AWS lÃµi <br> - TÃ¬m hiá»ƒu vá» IAM, EC2, S3 vÃ  mÃ´ hÃ¬nh Cloud Computing | 23/06/2026 | 23/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3 | - Táº¡o AWS Free Tier account <br> - LÃ m quen vá»›i AWS Console vÃ  AWS CLI | 24/06/2026 | 24/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4 | - Há»c EC2 cÆ¡ báº£n <br> - TÃ¬m hiá»ƒu phÆ°Æ¡ng thá»©c truy cáº­p SSH vÃ  Elastic IP | 25/06/2026 | 25/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - Thá»±c hÃ nh táº¡o vÃ  káº¿t ná»‘i EC2 instance <br> - Gáº¯n EBS volume vÃ  xÃ¡c minh hoáº¡t Ä‘á»™ng | 26/06/2026 | 26/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6 | - CÃ i Ä‘áº·t vÃ  cáº¥u hÃ¬nh **VS Code** vÃ  **AWS CLI** cho quÃ¡ trÃ¬nh há»c | 26/06/2026 | 27/06/2026 | |
+| 1 | - Hiểu mục tiêu, nội quy và kế hoạch học tập của chương trình | 22/06/2026 | 22/06/2026 | |
+| 2 | - Học các dịch vụ AWS lõi <br> - Tìm hiểu về IAM, EC2, S3 và mô hình Cloud Computing | 23/06/2026 | 23/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Tạo AWS Free Tier account <br> - Làm quen với AWS Console và AWS CLI | 24/06/2026 | 24/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Học EC2 cơ bản <br> - Tìm hiểu phương thức truy cập SSH và Elastic IP | 25/06/2026 | 25/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Thực hành tạo và kết nối EC2 instance <br> - Gắn EBS volume và xác minh hoạt động | 26/06/2026 | 26/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6 | - Cài đặt và cấu hình **VS Code** và **AWS CLI** cho quá trình học | 26/06/2026 | 27/06/2026 | |
 
-### Káº¿t quáº£ Tuáº§n 1:
+### Kết quả Tuần 1:
 
-* Hiá»ƒu cÃ¡c nhÃ³m dá»‹ch vá»¥ AWS chÃ­nh vÃ  cÃ¡ch chÃºng hoáº¡t Ä‘á»™ng.
-* Táº¡o vÃ  hoÃ n táº¥t cáº¥u hÃ¬nh ban Ä‘áº§u AWS Free Tier account.
-* Há»c cÃ¡ch Ä‘iá»u hÆ°á»›ng AWS Management Console vÃ  sá»­ dá»¥ng AWS CLI.
-* CÃ i Ä‘áº·t vÃ  cáº¥u hÃ¬nh **VS Code** vÃ  **AWS CLI** vá»›i credentials vÃ  region phÃ¹ há»£p.
-* Thá»±c hÃ nh cÃ¡c lá»‡nh cÆ¡ báº£n Ä‘á»ƒ kiá»ƒm tra tÃ i nguyÃªn EC2 vÃ  cáº¥u hÃ¬nh tÃ i khoáº£n.
-* Launch má»™t EC2 instance, káº¿t ná»‘i vÃ o nÃ³, vÃ  gáº¯n EBS volume.
-* XÃ¢y dá»±ng kiáº¿n thá»©c ná»n táº£ng cáº§n thiáº¿t Ä‘á»ƒ tiáº¿p tá»¥c há»c vÃ  thá»±c hÃ nh trong cÃ¡c tuáº§n tá»›i.
+* Hiểu các nhóm dịch vụ AWS chính và cách chúng hoạt động.
+* Tạo và hoàn tất cấu hình ban đầu AWS Free Tier account.
+* Học cách điều hướng AWS Management Console và sử dụng AWS CLI.
+* Cài đặt và cấu hình **VS Code** và **AWS CLI** với credentials và region phù hợp.
+* Thực hành các lệnh cơ bản để kiểm tra tài nguyên EC2 và cấu hình tài khoản.
+* Launch một EC2 instance, kết nối vào nó, và gắn EBS volume.
+* Xây dựng kiến thức nền tảng cần thiết để tiếp tục học và thực hành trong các tuần tới.

@@ -1,34 +1,34 @@
 ﻿---
-title: "Worklog Tuáº§n 5"
+title: "Worklog Tuần 5"
 date: 2024-01-01
 weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
 
-### Má»¥c tiÃªu Tuáº§n 5:
+### Mục tiêu Tuần 5:
 
-* Triá»ƒn khai quyá»n tÃ i liá»‡u (OWNER/EDITOR/VIEWER).
-* Triá»ƒn khai phiÃªn báº£n tÃ i liá»‡u vÃ  rollback.
-* Triá»ƒn khai tags, search, vÃ  chia sáº».
+* Triển khai quyền tài liệu (OWNER/EDITOR/VIEWER).
+* Triển khai phiên bản tài liệu và rollback.
+* Triển khai tags, search, và chia sẻ.
 
-### Nhiá»‡m vá»¥ trong tuáº§n:
+### Nhiệm vụ trong tuần:
 
-| STT | Nhiá»‡m vá»¥ | NgÃ y báº¯t Ä‘áº§u | NgÃ y hoÃ n thÃ nh | TÃ i liá»‡u tham kháº£o |
+| STT | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | --- | --- | --- | --- | --- |
-| 1 | - Triá»ƒn khai mÃ´ hÃ¬nh quyá»n vÃ  truy cáº­p theo vai trÃ² (OWNER/EDITOR/VIEWER) | 20/07/2026 | 21/07/2026 | |
-| 2 | - Triá»ƒn khai versioning tÃ i liá»‡u vÃ  rollback | 21/07/2026 | 22/07/2026 | |
-| 3 | - Triá»ƒn khai tags vÃ  gáº¯n tháº» tÃ i liá»‡u | 22/07/2026 | 23/07/2026 | |
-| 4 | - Triá»ƒn khai search theo tiÃªu Ä‘á»/loáº¡i/tag | 23/07/2026 | 24/07/2026 | |
-| 5 | - Triá»ƒn khai chia sáº» tÃ i liá»‡u vá»›i quyá»n kiá»ƒm soÃ¡t | 24/07/2026 | 25/07/2026 | |
-| 6 | - Triá»ƒn khai cÃ¡c endpoint thá»‘ng kÃª dashboard | 25/07/2026 | 26/07/2026 | |
+| 1 | - Triển khai mô hình quyền và truy cập theo vai trò (OWNER/EDITOR/VIEWER) | 20/07/2026 | 21/07/2026 | |
+| 2 | - Triển khai versioning tài liệu và rollback | 21/07/2026 | 22/07/2026 | |
+| 3 | - Triển khai tags và gắn thẻ tài liệu | 22/07/2026 | 23/07/2026 | |
+| 4 | - Triển khai search theo tiêu đề/loại/tag | 23/07/2026 | 24/07/2026 | |
+| 5 | - Triển khai chia sẻ tài liệu với quyền kiểm soát | 24/07/2026 | 25/07/2026 | |
+| 6 | - Triển khai các endpoint thống kê dashboard | 25/07/2026 | 26/07/2026 | |
 
-### Káº¿t quáº£ Tuáº§n 5:
+### Kết quả Tuần 5:
 
-* Triá»ƒn khai mÃ´ hÃ¬nh quyá»n vá»›i cÃ¡c vai trÃ² cáº¥p tÃ i liá»‡u (OWNER/EDITOR/VIEWER).
-* Triá»ƒn khai versioning tÃ i liá»‡u vÃ  rollback.
-* Triá»ƒn khai tags vÃ  gáº¯n tháº» tÃ i liá»‡u.
-* Triá»ƒn khai search theo tiÃªu Ä‘á», loáº¡i, vÃ  tag.
-* Triá»ƒn khai chia sáº» tÃ i liá»‡u vá»›i quyá»n kiá»ƒm soÃ¡t.
-* Triá»ƒn khai cÃ¡c endpoint thá»‘ng kÃª dashboard.
-* Viáº¿t unit tests cho cÃ¡c controller dÃ¹ng JUnit vÃ  Mockito.
+* Triển khai mô hình quyền với các vai trò cấp tài liệu (OWNER/EDITOR/VIEWER).
+* Triển khai versioning tài liệu và rollback.
+* Triển khai tags và gắn thẻ tài liệu.
+* Triển khai search theo tiêu đề, loại, và tag.
+* Triển khai chia sẻ tài liệu với quyền kiểm soát.
+* Triển khai các endpoint thống kê dashboard.
+* Viết unit tests cho các controller dùng JUnit và Mockito.

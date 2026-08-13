@@ -6,120 +6,95 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+# Bài thu hoạch “Agent Forge - Deep Dive (Ngày 2)”: Bộ nhớ, Đánh giá và Giám sát AI Agent
 
 ### Mục Đích Của Sự Kiện
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+Phiên thứ hai của chuỗi workshop chuyên sâu **AWS FCAJ Agent Forge – Deep Dive** do cộng đồng First Cloud AI Journey (FCAJ) phối hợp cùng các kỹ sư AWS tổ chức. Ở mức độ nâng cao (L300), buổi học tập trung vào việc xây dựng AI Agent có thể vận hành trong môi trường doanh nghiệp thực tế.
+
+Buổi học được thiết kế nhằm giúp người tham gia:
+
+- Củng cố hiểu biết về quản lý bộ nhớ, đánh giá chất lượng phản hồi, giám sát hệ thống và tối ưu hiệu suất.
+- Thực hành biến một AI Agent cơ bản thành một hệ thống Agentic AI sẵn sàng cho production.
 
 ### Danh Sách Diễn Giả
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+- Anh **Hiếu** - Đồng trưởng cộng đồng FCAJ, Solution Architect tại AWS Việt Nam.
+- Anh **Hải Anh** - Cloud Consultant tại Chiase Pacific, phụ trách phần thực hành lab.
+- **Nghia Tran** - Agentic AI Solution Architect.
+- **Anh Pham** - Cloud Consultant tại G-AsiaPacific Vietnam.
 
-### Nội Dung Nổi Bật
+### Định Dạng Workshop
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+Đây là **chuỗi workshop kéo dài 3 ngày**, được xây dựng theo lộ trình từ nền tảng đến triển khai AI Agent trong môi trường production bằng Amazon Bedrock AgentCore.
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+- **Ngày 1 (01/08): AgentCore Foundations** — tổng quan kiến trúc AgentCore (Runtime, Gateway, Identity).
+- **Ngày 2 (08/08): Memory, Evaluations, Observability & Optimization** — quản lý bộ nhớ, đánh giá chất lượng agent, giám sát hệ thống và tinh chỉnh hiệu suất.
+- **Ngày 3 (15/08): DevOps, Policies & Production Best Practices** — DevOps cho agent, xây dựng policies, bảo mật và các thực hành tốt khi vận hành production.
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+## Nội Dung Nổi Bật
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+### Agent Memory
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+Agent Memory giúp Agent vượt qua giới hạn của Context Window, duy trì ngữ cảnh cuộc trò chuyện và cá nhân hóa trải nghiệm người dùng.
 
-#### Domain-Driven Design (DDD)
+**Short-term Memory** lưu toàn bộ lịch sử hội thoại dưới dạng tin nhắn thô, giúp Agent bám sát mạch trao đổi hiện tại và phản hồi nhất quán. Hệ thống cũng hỗ trợ cơ chế rẽ nhánh, tương tự cách Git tạo nhánh trong phát triển phần mềm.
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+**Long-term Memory** hoạt động bất đồng bộ, trích xuất thông tin quan trọng từ hội thoại và lưu dưới dạng vector để truy xuất trong các phiên sau. Bốn chiến lược lưu trữ chính:
 
-#### Event-Driven Architecture
+- **Summary:** tóm tắt và nén nội dung hội thoại.
+- **User Preference:** lưu trữ sở thích của người dùng.
+- **Semantic:** lưu trữ tri thức chuyên ngành.
+- **Episodic:** lưu lại các quyết định hoặc sự kiện đã diễn ra.
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+**Namespace** được dùng như một cấu trúc thư mục phân cấp để cô lập dữ liệu theo strategy, actor hoặc session. Kết hợp semantic search và similarity ranking, Agent có thể tìm đúng thông tin cần thiết, giảm lượng token và cải thiện thời gian phản hồi.
 
-#### Compute Evolution
+### Khả Năng Quan Sát Hệ Thống
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+Workshop nhấn mạnh nguyên tắc: *“You cannot fix what you cannot see”* — không thể khắc phục vấn đề nếu không quan sát được vấn đề. Hệ thống Observability sử dụng chuẩn OpenTelemetry để thu thập ba nhóm dữ liệu chính:
 
-#### Amazon Q Developer
+- **Logs:** ghi lại chi tiết request, lỗi kết nối, lỗi hệ thống hoặc log từ terminal.
+- **Traces:** theo dõi toàn bộ hành trình của một request, từ lúc gửi prompt đến khi Agent trả phản hồi, bao gồm các tool call.
+- **Metrics:** đo các chỉ số như mức tiêu thụ token, tỷ lệ lỗi và độ trễ phản hồi.
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+Những dữ liệu này giúp đội phát triển xác định nguyên nhân chậm trễ, tối ưu chi phí token và cải thiện trải nghiệm người dùng.
 
-### Những Gì Học Được
+### Hệ Thống Đánh Giá Agent
 
-#### Tư Duy Thiết Kế
+Một rủi ro phổ biến của AI Agent là hiện tượng **hallucination**, tức đưa ra thông tin không chính xác nhưng thể hiện như sự thật. Để hạn chế rủi ro này, hệ thống cung cấp 13 evaluator tích hợp sẵn, chẳng hạn như **correctness** và **helpfulness**.
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+Các evaluator được áp dụng ở ba cấp độ:
 
-#### Kiến Trúc Kỹ Thuật
+- **Session level:** đánh giá kết quả của toàn bộ phiên làm việc.
+- **Trace level:** đánh giá độ chính xác của phản hồi.
+- **Span level:** đánh giá từng bước xử lý, chẳng hạn như gọi tool hoặc truyền tham số.
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+Hệ thống hỗ trợ hai hình thức đánh giá. **On-demand** phù hợp với giai đoạn phát triển và thử nghiệm; **Online** dùng để theo dõi chất lượng Agent theo thời gian thực trong production. Kết quả đánh giá tự động vẫn cần được chuyên gia lĩnh vực kiểm chứng để bảo đảm tính chính xác.
 
-#### Chiến Lược Hiện Đại Hóa
+## Những Gì Học Được
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+### Kiến Thức Chuyên Môn
 
-### Ứng Dụng Vào Công Việc
+- Hiểu rõ sự khác biệt giữa Short-term Memory và Long-term Memory, đặc biệt là cơ chế xử lý đồng bộ và bất đồng bộ.
+- Nắm được ba trụ cột của Observability là Logs, Traces và Metrics, cùng vai trò của chuẩn OpenTelemetry trong việc theo dõi sức khỏe hệ thống.
+- Hiểu cách các evaluator tự động đánh giá phản hồi của Agent theo tiêu chí chuẩn hóa thay vì dựa hoàn toàn vào cảm nhận chủ quan.
+- Biết thêm về Cedar Policy và cơ chế sandbox, qua đó nhận thức rõ vai trò của bảo mật khi Agent thực hiện tác vụ hoặc thử nghiệm mã nguồn.
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+### Bài Học Kinh Nghiệm
 
-### Trải nghiệm trong event
+- Thiết kế AI Agent theo từng chức năng nhỏ trước khi xây dựng hệ thống phức tạp.
+- Luôn ưu tiên bảo mật và phân quyền khi AI Agent truy cập tài nguyên.
+- Theo dõi, đánh giá và tối ưu AI Agent dựa trên kết quả thực tế.
+- Xây dựng AI Agent theo hướng dễ mở rộng và dễ bảo trì.
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+## Trải Nghiệm Trong Workshop
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+Tham gia **Ngày 2 của AWS FCAJ Agent Forge – Deep Dive** giúp em có cái nhìn tổng quan về cách xây dựng và vận hành AI Agent trong môi trường doanh nghiệp.
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+Qua phần trình bày của diễn giả và các nội dung thực hành, em hiểu rõ hơn cách tạo ra một AI Agent hiệu quả bằng việc cung cấp cho hệ thống cơ chế lưu trữ tri thức, giám sát, đánh giá chất lượng và bảo mật chặt chẽ.
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+### Một số hình ảnh khi tham gia sự kiện
 
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+![Event Photo 1](/images/4-EventParticipated/image001.jpg)
 
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
-
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+> **Đánh giá tổng thể:** Ngày 2 của **AWS FCAJ Agent Forge – Deep Dive** đã cung cấp nền tảng vững chắc về **Agentic AI** và **Amazon Bedrock AgentCore**, giúp người tham gia hiểu rõ từ các khái niệm cơ bản đến kiến trúc và cách triển khai AI Agent trong môi trường production. Workshop kết hợp giữa lý thuyết, ví dụ minh họa và các nội dung thực hành, đồng thời nhấn mạnh các yếu tố quan trọng như bảo mật, khả năng mở rộng, quản lý vòng đời và tích hợp công cụ. Đây là một chương trình hữu ích cho những ai muốn xây dựng các hệ thống AI Agent đáp ứng yêu cầu của môi trường doanh nghiệp.
