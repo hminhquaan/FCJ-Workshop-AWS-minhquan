@@ -16,7 +16,8 @@ pre: " <b> 1.8. </b> "
 * Hoàn thiện báo cáo và demo.
 
 ### Nhiệm vụ trong tuần:
-| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+
+| STT | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | --- | --- | --- | --- | --- |
 | 1 | - Build frontend React | 10/08/2026 | 11/08/2026 | |
 | 2 | - Host frontend trên AWS Amplify và cấu hình env vars | 11/08/2026 | 12/08/2026 | |

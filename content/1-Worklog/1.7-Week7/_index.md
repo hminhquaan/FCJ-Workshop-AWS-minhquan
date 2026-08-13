@@ -16,7 +16,8 @@ pre: " <b> 1.7. </b> "
 * Deploy the backend and verify the API.
 
 ### Tasks to be carried out this week:
-| Day | Task | Start Date | Completion Date | Reference Material |
+
+| No. | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
 | 1 | - Package the Spring Boot backend as a fat jar | 03/08/2026 | 03/08/2026 | |
 | 2 | - Write the SAM template (`template.yaml`) for Lambda + API Gateway | 04/08/2026 | 04/08/2026 | |

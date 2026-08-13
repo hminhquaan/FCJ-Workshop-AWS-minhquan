@@ -16,9 +16,10 @@ pre: " <b> 1.4. </b> "
 * Triển khai CRUD tài liệu và thư mục với Aurora.
 
 ### Nhiệm vụ trong tuần:
-| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+
+| STT | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | --- | --- | --- | --- | --- |
-| 1 | - Thiết lập cấu trúc project Spring Boot (Java 17) | 13/07/2026 | 14/07/2026 | |
+| 1 | - Thiết lập cấu trúc project Spring Boot (Java 17) trong VS Code | 13/07/2026 | 14/07/2026 | |
 | 2 | - Triển khai tích hợp Cognito và xác thực JWT | 14/07/2026 | 15/07/2026 | |
 | 3 | - Triển khai entity user, repository, và ánh xạ vai trò | 15/07/2026 | 16/07/2026 | |
 | 4 | - Triển khai các endpoint CRUD tài liệu và thư mục | 16/07/2026 | 18/07/2026 | |

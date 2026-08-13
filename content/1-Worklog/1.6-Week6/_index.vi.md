@@ -16,7 +16,8 @@ pre: " <b> 1.6. </b> "
 * Thêm thông báo email SNS.
 
 ### Nhiệm vụ trong tuần:
-| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+
+| STT | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | --- | --- | --- | --- | --- |
 | 1 | - Học AWS Step Functions và khái niệm state machine | 27/07/2026 | 28/07/2026 | |
 | 2 | - Tạo SNS topic và email subscription | 28/07/2026 | 28/07/2026 | |

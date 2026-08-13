@@ -11,19 +11,20 @@ pre: " <b> 1.3. </b> "
 
 ### Week 3 Objectives:
 
-* Learn Amazon Aurora and relational databases.
+* Learn Amazon Aurora (MySQL) and relational databases.
 * Design the EDMS data model.
 * Set up the initial AWS infrastructure (S3, Aurora, IAM, Cognito).
 
 ### Tasks to be carried out this week:
-| Day | Task | Start Date | Completion Date | Reference Material |
+
+| No. | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 1 | - Learn Amazon Aurora (MySQL) and relational databases | 06/07/2026 | 07/07/2026 | |
+| 1 | - Study Amazon Aurora (MySQL) and relational database concepts | 06/07/2026 | 07/07/2026 | |
 | 2 | - Design the EDMS ERD: departments, users, documents, versions, permissions | 07/07/2026 | 08/07/2026 | |
 | 3 | - Create the EDMS S3 bucket | 08/07/2026 | 08/07/2026 | |
 | 4 | - Create the Aurora cluster and note the endpoint | 09/07/2026 | 09/07/2026 | |
-| 5 | - Set up IAM roles and Cognito User Pool with groups (ADMIN/MANAGER/USER) | 10/07/2026 | 11/07/2026 | |
-| 6 | - Review the architecture and prepare the backend skeleton | 12/07/2026 | 12/07/2026 | |
+| 5 | - Set up IAM roles and a Cognito User Pool with groups (ADMIN/MANAGER/USER) | 10/07/2026 | 11/07/2026 | |
+| 6 | - Review the architecture and prepare the backend skeleton in VS Code | 12/07/2026 | 12/07/2026 | |
 
 ### Week 3 Achievements:
 

@@ -16,9 +16,10 @@ pre: " <b> 1.6. </b> "
 * Add SNS email notifications.
 
 ### Tasks to be carried out this week:
-| Day | Task | Start Date | Completion Date | Reference Material |
+
+| No. | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 1 | - Learn AWS Step Functions and state machine concepts | 27/07/2026 | 28/07/2026 | |
+| 1 | - Study AWS Step Functions and state machine concepts | 27/07/2026 | 28/07/2026 | |
 | 2 | - Create the SNS topic and email subscription | 28/07/2026 | 28/07/2026 | |
 | 3 | - Design the approval state machine (CaptureToken → Decision → Mark → Notify) | 29/07/2026 | 29/07/2026 | |
 | 4 | - Integrate Step Functions into the backend (startExecution, SendTaskSuccess) | 30/07/2026 | 31/07/2026 | |

@@ -16,9 +16,10 @@ pre: " <b> 1.5. </b> "
 * Implement tags, search, and sharing.
 
 ### Tasks to be carried out this week:
-| Day | Task | Start Date | Completion Date | Reference Material |
+
+| No. | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 1 | - Implement permission model and role-based access (OWNER/EDITOR/VIEWER) | 20/07/2026 | 21/07/2026 | |
+| 1 | - Implement the permission model and role-based access (OWNER/EDITOR/VIEWER) | 20/07/2026 | 21/07/2026 | |
 | 2 | - Implement document versioning and rollback | 21/07/2026 | 22/07/2026 | |
 | 3 | - Implement tags and document tagging | 22/07/2026 | 23/07/2026 | |
 | 4 | - Implement search by title/type/tag | 23/07/2026 | 24/07/2026 | |
@@ -33,4 +34,4 @@ pre: " <b> 1.5. </b> "
 * Implemented search by title, type, and tag.
 * Implemented document sharing with controlled access.
 * Implemented dashboard statistics endpoints.
-* Wrote unit tests for the controllers.
+* Wrote unit tests for the controllers using JUnit and Mockito.

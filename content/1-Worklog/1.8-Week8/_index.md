@@ -16,7 +16,8 @@ pre: " <b> 1.8. </b> "
 * Finalize the report and demo.
 
 ### Tasks to be carried out this week:
-| Day | Task | Start Date | Completion Date | Reference Material |
+
+| No. | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
 | 1 | - Build the React frontend | 10/08/2026 | 11/08/2026 | |
 | 2 | - Host the frontend on AWS Amplify and configure env vars | 11/08/2026 | 12/08/2026 | |
@@ -29,5 +30,5 @@ pre: " <b> 1.8. </b> "
 * Built and hosted the React frontend on AWS Amplify over HTTPS.
 * Configured the Amplify environment variables (API URL, Cognito IDs).
 * Ran end-to-end tests of the full application.
-* Verified the approval workflow: document moved through DRAFT → PENDING → APPROVED, the Step Functions execution succeeded, and the SNS email was delivered.
+* Verified the approval workflow: the document moved through DRAFT → PENDING → APPROVED, the Step Functions execution succeeded, and the SNS email was delivered.
 * Finalized the demo and the internship report.

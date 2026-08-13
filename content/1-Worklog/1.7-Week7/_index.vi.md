@@ -16,7 +16,8 @@ pre: " <b> 1.7. </b> "
 * Deploy backend và xác minh API.
 
 ### Nhiệm vụ trong tuần:
-| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+
+| STT | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | --- | --- | --- | --- | --- |
 | 1 | - Đóng gói backend Spring Boot thành fat jar | 03/08/2026 | 03/08/2026 | |
 | 2 | - Viết SAM template (`template.yaml`) cho Lambda + API Gateway | 04/08/2026 | 04/08/2026 | |

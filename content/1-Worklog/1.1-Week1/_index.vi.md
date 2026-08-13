@@ -11,25 +11,27 @@ pre: " <b> 1.1. </b> "
 
 ### Mục tiêu Tuần 1:
 
-* Làm quen với đội First Cloud AI Journey và hiểu chương trình.
-* Hiểu các dịch vụ AWS cơ bản, console, và CLI.
+* Làm quen với chương trình thực tập và quy trình làm việc.
+* Khám phá các dịch vụ AWS cơ bản.
+* Thiết lập môi trường học tập và thực hành cơ bản.
 
 ### Nhiệm vụ trong tuần:
-| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+
+| STT | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | --- | --- | --- | --- | --- |
-| 1 | - Làm quen với các thành viên FCAJ <br> - Đọc quy định và nội quy thực tập | 22/06/2026 | 22/06/2026 | |
-| 2 | - Học về AWS và các nhóm dịch vụ chính <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database | 23/06/2026 | 23/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3 | - Tạo AWS Free Tier account <br> - Học AWS Console & AWS CLI | 24/06/2026 | 24/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4 | - Học EC2 cơ bản: instance types, AMI, EBS, security groups | 25/06/2026 | 26/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - **Thực hành:** launch EC2, kết nối SSH, attach EBS volume | 26/06/2026 | 26/06/2026 | |
-| 6 | - Ôn tập nội dung tuần và chuẩn bị kế hoạch thực tập | 27/06/2026 | 27/06/2026 | |
+| 1 | - Hiểu mục tiêu, nội quy và kế hoạch học tập của chương trình | 22/06/2026 | 22/06/2026 | |
+| 2 | - Học các dịch vụ AWS lõi <br> - Tìm hiểu về IAM, EC2, S3 và mô hình Cloud Computing | 23/06/2026 | 23/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Tạo AWS Free Tier account <br> - Làm quen với AWS Console và AWS CLI | 24/06/2026 | 24/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Học EC2 cơ bản <br> - Tìm hiểu phương thức truy cập SSH và Elastic IP | 25/06/2026 | 25/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Thực hành tạo và kết nối EC2 instance <br> - Gắn EBS volume và xác minh hoạt động | 26/06/2026 | 26/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6 | - Cài đặt và cấu hình **VS Code** và **AWS CLI** cho quá trình học | 26/06/2026 | 27/06/2026 | |
 
 ### Kết quả Tuần 1:
 
-* Hiểu AWS là gì và các nhóm dịch vụ chính: Compute, Storage, Networking, Database, v.v.
-* Tạo và cấu hình thành công AWS Free Tier account.
-* Làm quen với AWS Management Console.
-* Cài đặt và cấu hình AWS CLI (Access Key, Secret Key, Default Region).
-* Dùng AWS CLI cho các thao tác cơ bản: xem thông tin tài khoản, liệt kê regions, xem EC2, quản lý key pairs.
-* Launch một EC2 instance, kết nối SSH, và attach EBS volume.
-* Học cách quản lý tài nguyên AWS song song giữa web interface và CLI.
+* Hiểu các nhóm dịch vụ AWS chính và cách chúng hoạt động.
+* Tạo và hoàn tất cấu hình ban đầu AWS Free Tier account.
+* Học cách điều hướng AWS Management Console và sử dụng AWS CLI.
+* Cài đặt và cấu hình **VS Code** và **AWS CLI** với credentials và region phù hợp.
+* Thực hành các lệnh cơ bản để kiểm tra tài nguyên EC2 và cấu hình tài khoản.
+* Launch một EC2 instance, kết nối vào nó, và gắn EBS volume.
+* Xây dựng kiến thức nền tảng cần thiết để tiếp tục học và thực hành trong các tuần tới.

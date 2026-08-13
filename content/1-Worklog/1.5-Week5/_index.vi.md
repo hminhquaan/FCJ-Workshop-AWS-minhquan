@@ -16,7 +16,8 @@ pre: " <b> 1.5. </b> "
 * Triển khai tags, search, và chia sẻ.
 
 ### Nhiệm vụ trong tuần:
-| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+
+| STT | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | --- | --- | --- | --- | --- |
 | 1 | - Triển khai mô hình quyền và truy cập theo vai trò (OWNER/EDITOR/VIEWER) | 20/07/2026 | 21/07/2026 | |
 | 2 | - Triển khai versioning tài liệu và rollback | 21/07/2026 | 22/07/2026 | |
@@ -33,4 +34,4 @@ pre: " <b> 1.5. </b> "
 * Triển khai search theo tiêu đề, loại, và tag.
 * Triển khai chia sẻ tài liệu với quyền kiểm soát.
 * Triển khai các endpoint thống kê dashboard.
-* Viết unit tests cho các controller.
+* Viết unit tests cho các controller dùng JUnit và Mockito.
