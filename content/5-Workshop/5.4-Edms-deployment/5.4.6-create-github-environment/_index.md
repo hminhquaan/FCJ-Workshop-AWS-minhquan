@@ -14,7 +14,6 @@ A **GitHub Environment** groups environment-specific settings and can require **
 2. Click **New environment**.
 3. Name it `production` and click **Configure environment**.
 
-![Figure 20. Create environment](/images/5-Workshop/5.4-Edms-deployment/create-environment.png)
 
 ### 5.4.6.2 Add required reviewers (optional but recommended)
 

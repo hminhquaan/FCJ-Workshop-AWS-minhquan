@@ -71,4 +71,3 @@ Backend là một **monolith**: một ứng dụng Spring Boot chứa toàn bộ
 
 > **Ghi chú:** Đánh đổi "serverless monolith" này là chủ ý cho workshop. Nó giữ cho việc deploy đơn giản (một Lambda) trong khi vẫn có một nguồn sự thật duy nhất cho backend. `template.yaml` định nghĩa cách jar được chuyển thành một hàm Lambda.
 
-![Figure 15. Ánh xạ Backend sang Lambda](/images/5-Workshop/5.4-Edms-deployment/backend-to-lambda.png)

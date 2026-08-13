@@ -17,13 +17,13 @@ To let GitHub Actions assume a role instead of holding permanent AWS keys, regis
 
 1. Open the **IAM console** → **Identity providers** → **Add provider**.
 
-![Figure 8. Add OIDC provider](/images/5-Workshop/5.3-Edms-infrastructure/oidc-provider.png)
 
 2. **Provider type:** select **OpenID Connect**.
 3. **Provider URL:** enter `https://token.actions.githubusercontent.com`.
 4. IAM will show **Get thumbprint** — click it to fetch the certificate thumbprint.
 5. **Audience:** enter `sts.amazonaws.com`.
 6. Click **Add provider**.
+![Figure 8. Add OIDC provider](/images/5-Workshop/5.3-Edms-infrastructure/oidc-provider.png)
 
 > **Note:** This step is done only once per AWS account. The provider URL must match exactly `https://token.actions.githubusercontent.com`.
 
@@ -39,7 +39,6 @@ To let GitHub Actions assume a role instead of holding permanent AWS keys, regis
 8. Name the role `github-actions-deploy-role`.
 9. Click **Create role**.
 
-![Figure 9. Deploy role](/images/5-Workshop/5.3-Edms-infrastructure/deploy-role.png)
 
 > **Note:** Because the role is assumed via OIDC, the GitHub workflow uses `aws-actions/configure-aws-credentials` with `role-to-assume` — no access key ID or secret access key is ever committed.
 
@@ -57,7 +56,6 @@ To let GitHub Actions assume a role instead of holding permanent AWS keys, regis
 5. Name the role `edms-lambda-role`.
 6. Click **Create role**.
 
-![Figure 10. Lambda role](/images/5-Workshop/5.3-Edms-infrastructure/lambda-role.png)
 
 > **Best practice:** Grant only the permissions each role needs (**least-privilege**). Never put AWS keys in code or configuration files.
 

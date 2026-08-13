@@ -18,7 +18,6 @@ EDMS dùng **Amazon Aurora (MySQL)** để lưu toàn bộ metadata quan hệ (n
 
 1. Bấm **Create database**.
 
-![Figure 4. Tạo database](/images/5-Workshop/5.3-Edms-infrastructure/create-database.png)
 
 2. Trong trang **Create database**, cấu hình:
 + **Engine options:** chọn **Amazon Aurora** và edition **MySQL**.
@@ -29,8 +28,8 @@ EDMS dùng **Amazon Aurora (MySQL)** để lưu toàn bộ metadata quan hệ (n
 + **Connectivity:** chọn **Don't connect to an EC2 compute resource**.
 + Giữ nguyên các cài đặt còn lại.
 3. Bấm **Create database**.
+![Figure 4. Tạo database](/images/5-Workshop/5.3-Edms-infrastructure/create-database.png)
 
-![Figure 5. Cấu hình Aurora](/images/5-Workshop/5.3-Edms-infrastructure/aurora-config.png)
 
 > **Ghi chú:** Aurora dùng mô hình **cluster** có thể chứa một hoặc nhiều instance. Một instance là đủ cho workshop này. Sau này Aurora có thể tạo thêm read replica nếu bạn cần tăng hiệu năng đọc.
 

@@ -29,7 +29,6 @@ Mặc định Lambda có thể bùng lên tới giới hạn tài khoản. Nếu
 4. Chọn **Reserve concurrency** và đặt một giá trị (ví dụ `5`).
 5. Bấm **Save**.
 
-![Figure 38. Lambda concurrency](/images/5-Workshop/5.5-Edms-operations/lambda-concurrency.png)
 
 > **Ghi chú:** Trong `template.yaml` điều này được đặt bằng thuộc tính `ReservedConcurrentExecutions` trên resource function. Giá trị `0` vô hiệu hóa function; bất kỳ giá trị nào khác trở thành giới hạn cứng cho các execution đồng thời.
 

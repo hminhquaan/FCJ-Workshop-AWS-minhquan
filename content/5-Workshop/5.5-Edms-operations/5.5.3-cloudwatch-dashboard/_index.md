@@ -13,7 +13,6 @@ A **CloudWatch Dashboard** gives you a single view of the health and performance
 1. Open the **CloudWatch console** → **Dashboards** → **Create dashboard**.
 2. Give the dashboard a name, e.g. `edms-dashboard`, and click **Create**.
 
-![Figure 43. Create dashboard](/images/5-Workshop/5.5-Edms-operations/create-dashboard.png)
 
 ### 5.5.3.2 Add a Lambda widget
 
@@ -47,6 +46,5 @@ A **CloudWatch Dashboard** gives you a single view of the health and performance
 2. Click **Save dashboard**.
 3. Re-open the dashboard later to see a live view of application health.
 
-![Figure 44. Add widget](/images/5-Workshop/5.5-Edms-operations/add-widget.png)
 
 > **Note:** A dashboard is **read-only** and very cheap. It does not raise alarms by itself — it simply helps you spot anomalies at a glance before they affect users.

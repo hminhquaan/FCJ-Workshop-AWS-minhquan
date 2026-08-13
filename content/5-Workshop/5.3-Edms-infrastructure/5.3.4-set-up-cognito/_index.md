@@ -16,8 +16,8 @@ Amazon Cognito provides authentication and role-based authorization for EDMS. Us
 ### 5.3.4.2 Create a User Pool
 
 1. Click **Create user pool**.
-
 ![Figure 11. Create user pool](/images/5-Workshop/5.3-Edms-infrastructure/create-userpool.png)
+
 
 2. In **Configure sign-in experience**:
 + **Sign-in options:** select **Email**.

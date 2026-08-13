@@ -16,7 +16,6 @@ pre : " <b> 5.5.2 </b> "
 4. Chọn **repository EDMS** và nhánh **`main`**.
 5. Bấm **Next**.
 
-![Figure 40. Amplify connect](/images/5-Workshop/5.5-Edms-operations/amplify-connect.png)
 
 > **Ghi chú:** Frontend nằm trong thư mục con `frontend/` của repository, nên bạn phải trỏ build vào thư mục đó.
 

@@ -16,7 +16,6 @@ This section finalizes the API Gateway ↔ Lambda integration and **deploys** th
 4. Click **Save**.
 5. If prompted, grant API Gateway permission to invoke the Lambda by clicking **OK**.
 
-![Figure 33. Lambda integration](/images/5-Workshop/5.4-Edms-deployment/lambda-integration.png)
 
 > **Note:** The invoke permission (an `AWS::Lambda::Permission` resource) is what lets API Gateway call the function. Without it, calls return `403 Forbidden` with `Missing Authentication Token` or an access-denied error.
 
@@ -29,7 +28,6 @@ An API Gateway API needs to be **deployed to a stage** before it has a usable UR
 3. (Optional) Add a stage description.
 4. Click **Deploy**.
 
-![Figure 34. Deploy API](/images/5-Workshop/5.4-Edms-deployment/deploy-api.png)
 
 ### 5.4.12.3 Retrieve the invoke URL
 

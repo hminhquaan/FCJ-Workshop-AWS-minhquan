@@ -17,13 +17,13 @@ IAM cung cấp các định danh và quyền cần thiết để EDMS hoạt đ�
 
 1. Mở **IAM console** → **Identity providers** → **Add provider**.
 
-![Figure 8. Thêm OIDC provider](/images/5-Workshop/5.3-Edms-infrastructure/oidc-provider.png)
 
 2. **Provider type:** chọn **OpenID Connect**.
 3. **Provider URL:** nhập `https://token.actions.githubusercontent.com`.
 4. IAM hiển thị **Get thumbprint** — bấm để lấy thumbprint chứng chỉ.
 5. **Audience:** nhập `sts.amazonaws.com`.
 6. Bấm **Add provider**.
+![Figure 8. Thêm OIDC provider](/images/5-Workshop/5.3-Edms-infrastructure/oidc-provider.png)
 
 > **Ghi chú:** Bước này chỉ thực hiện một lần cho mỗi tài khoản AWS. Provider URL phải khớp chính xác `https://token.actions.githubusercontent.com`.
 
@@ -39,7 +39,6 @@ IAM cung cấp các định danh và quyền cần thiết để EDMS hoạt đ�
 8. Đặt tên role `github-actions-deploy-role`.
 9. Bấm **Create role**.
 
-![Figure 9. Deploy role](/images/5-Workshop/5.3-Edms-infrastructure/deploy-role.png)
 
 > **Ghi chú:** Vì role được assume qua OIDC, workflow GitHub dùng `aws-actions/configure-aws-credentials` với `role-to-assume` — không bao giờ phải commit access key ID hay secret access key.
 
@@ -57,7 +56,6 @@ IAM cung cấp các định danh và quyền cần thiết để EDMS hoạt đ�
 5. Đặt tên role `edms-lambda-role`.
 6. Bấm **Create role**.
 
-![Figure 10. Lambda role](/images/5-Workshop/5.3-Edms-infrastructure/lambda-role.png)
 
 > **Thực hành tốt:** Chỉ cấp những quyền cần thiết cho mỗi role (**least-privilege**). Không bao giờ đặt AWS key trong code hoặc file cấu hình.
 

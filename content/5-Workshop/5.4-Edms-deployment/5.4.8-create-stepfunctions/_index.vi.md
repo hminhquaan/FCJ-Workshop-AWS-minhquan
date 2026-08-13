@@ -15,7 +15,6 @@ EDMS điều phối **quy trình phê duyệt tài liệu** bằng **AWS Step Fu
 3. **Name:** `edms-notifications`.
 4. Giữ nguyên các cài đặt khác và bấm **Create topic**.
 
-![Figure 23. SNS topic](/images/5-Workshop/5.4-Edms-deployment/sns-topic.png)
 
 5. Sao chép **topic ARN** — bạn sẽ đặt nó làm secret `SNS_TOPIC_ARN` (5.4.5) và tham chiếu trong state machine.
 
@@ -45,6 +44,7 @@ CaptureToken (waitForTaskToken)  ── chờ vô hạn
    → Decision (Choice)            ── APPROVE / REJECT
    → MarkApproved / MarkRejected  ── cập nhật DB qua Lambda
    → NotifyApproved / NotifyRejected  ── publish lên SNS
+![Figure 24. Luồng state machine](/images/5-Workshop/5.4-Edms-deployment/statemachine.png)
 ```
 
 

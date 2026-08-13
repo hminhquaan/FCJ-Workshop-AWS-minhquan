@@ -79,6 +79,5 @@ Tài nguyên này là cầu nối cho phép runner GitHub xác thực vào AWS v
 5. Trên trang **Review**, kéo xuống và tick **I acknowledge that AWS CloudFormation might create IAM resources**.
 6. Bấm **Submit** (hoặc **Create stack**).
 
-![Figure 16. Tạo IAM stack](/images/5-Workshop/5.4-Edms-deployment/create-iam-stack.png)
 
 > **Ghi chú:** Deploy stack tạo IAM roles yêu cầu bạn xác nhận rõ ràng capability IAM. Stack mất khoảng một phút để hoàn tất.

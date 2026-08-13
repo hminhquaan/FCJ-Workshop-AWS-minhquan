@@ -14,7 +14,6 @@ Một **GitHub Environment** nhóm các cài đặt theo môi trường và có 
 2. Bấm **New environment**.
 3. Đặt tên `production` và bấm **Configure environment**.
 
-![Figure 20. Tạo environment](/images/5-Workshop/5.4-Edms-deployment/create-environment.png)
 
 ### 5.4.6.2 Thêm required reviewers (tùy chọn nhưng nên dùng)
 

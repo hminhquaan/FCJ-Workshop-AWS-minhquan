@@ -13,7 +13,6 @@ Amazon S3 stores the original document files of EDMS. Because files are accessed
 1. Open the **Amazon S3 Console**.
 2. In the **Buckets** list, click **Create bucket**.
 
-![Figure 1. Create bucket](/images/5-Workshop/5.3-Edms-infrastructure/create-bucket.png)
 
 3. In the **Create bucket** page, configure:
 + **Bucket name:** a globally unique name, for example `edms-docs-bucket-<your-account-id>`.
@@ -23,8 +22,8 @@ Amazon S3 stores the original document files of EDMS. Because files are accessed
 + **Bucket Versioning:** enable it (supports document version history).
 + **Tags (optional):** add a tag such as `Project=EDMS`.
 4. Scroll down and click **Create bucket**.
+![Figure 1. Create bucket](/images/5-Workshop/5.3-Edms-infrastructure/create-bucket.png)
 
-![Figure 2. Bucket configuration](/images/5-Workshop/5.3-Edms-infrastructure/bucket-config.png)
 
 ### 5.3.1.2 Verify the bucket
 

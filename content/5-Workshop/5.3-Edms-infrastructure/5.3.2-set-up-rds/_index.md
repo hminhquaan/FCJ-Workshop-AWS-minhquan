@@ -18,7 +18,6 @@ EDMS uses **Amazon Aurora (MySQL)** to store all relational metadata (users, fol
 
 1. Click **Create database**.
 
-![Figure 4. Create database](/images/5-Workshop/5.3-Edms-infrastructure/create-database.png)
 
 2. In the **Create database** page, configure:
 + **Engine options:** choose **Amazon Aurora** and the **MySQL** edition.
@@ -29,8 +28,8 @@ EDMS uses **Amazon Aurora (MySQL)** to store all relational metadata (users, fol
 + **Connectivity:** choose **Don't connect to an EC2 compute resource**.
 + Leave the remaining settings at their defaults.
 3. Click **Create database**.
+![Figure 4. Create database](/images/5-Workshop/5.3-Edms-infrastructure/create-database.png)
 
-![Figure 5. Aurora configuration](/images/5-Workshop/5.3-Edms-infrastructure/aurora-config.png)
 
 > **Note:** Aurora uses a **cluster** that can contain one or more instances. A single instance is enough for this workshop. Aurora can also create a read replica later if you need higher read throughput.
 

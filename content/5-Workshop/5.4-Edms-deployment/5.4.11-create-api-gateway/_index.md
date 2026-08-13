@@ -13,7 +13,6 @@ pre : " <b> 5.4.11 </b> "
 1. Open the **API Gateway console** → **Create API**.
 2. Under **REST API** (not HTTP API), click **Build**.
 
-![Figure 30. Create API](/images/5-Workshop/5.4-Edms-deployment/create-api.png)
 
 3. **Choose the protocol:** REST. **Create new API.**
 4. **API name:** `edms-api`.
@@ -40,7 +39,6 @@ The proxy resource is automatically given an **ANY** method. Configure it to poi
    + **Lambda Function:** your EDMS Lambda (e.g. `EdmsBackendFunction`)
 3. Click **Save**.
 
-![Figure 31. Proxy method](/images/5-Workshop/5.4-Edms-deployment/proxy-method.png)
 
 4. API Gateway will prompt you to grant permission to invoke the Lambda — click **OK** to allow it.
 
@@ -52,6 +50,5 @@ For a health check or the API root, add an **ANY** (or `GET`) method on the root
 2. Click **Actions** → **Create Method** → select **ANY** (or `GET`).
 3. Set the same Lambda integration and click **Save**.
 
-![Figure 32. Root method](/images/5-Workshop/5.4-Edms-deployment/root-method.png)
 
 > **Note:** The `{proxy+}` resource lets API Gateway forward any path (`/auth/login`, `/documents`, ...) to the Lambda, which routes it inside the Spring Boot app. This is what makes the whole backend reachable through a single API.

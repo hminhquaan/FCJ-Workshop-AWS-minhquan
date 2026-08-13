@@ -79,6 +79,5 @@ The `GithubActionsDeployRole` trusts the OIDC provider, but only under a strict 
 5. On the **Review** page, scroll down and tick **I acknowledge that AWS CloudFormation might create IAM resources**.
 6. Click **Submit** (or **Create stack**).
 
-![Figure 16. Create IAM stack](/images/5-Workshop/5.4-Edms-deployment/create-iam-stack.png)
 
 > **Note:** Deploying a stack that creates IAM roles requires you to explicitly acknowledge the IAM capability. The stack takes about a minute to finish.

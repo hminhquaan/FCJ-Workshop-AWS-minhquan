@@ -13,7 +13,6 @@ pre : " <b> 5.4.11 </b> "
 1. Mở **API Gateway console** → **Create API**.
 2. Trong **REST API** (không phải HTTP API), bấm **Build**.
 
-![Figure 30. Tạo API](/images/5-Workshop/5.4-Edms-deployment/create-api.png)
 
 3. **Choose the protocol:** REST. **Create new API.**
 4. **API name:** `edms-api`.
@@ -40,7 +39,6 @@ Proxy resource tự động có một method **ANY**. Cấu hình nó trỏ tớ
    + **Lambda Function:** Lambda EDMS của bạn (ví dụ `EdmsBackendFunction`)
 3. Bấm **Save**.
 
-![Figure 31. Proxy method](/images/5-Workshop/5.4-Edms-deployment/proxy-method.png)
 
 4. API Gateway sẽ nhắc cấp quyền invoke Lambda — bấm **OK** để cho phép.
 
@@ -52,6 +50,5 @@ Proxy resource tự động có một method **ANY**. Cấu hình nó trỏ tớ
 2. Bấm **Actions** → **Create Method** → chọn **ANY** (hoặc `GET`).
 3. Đặt cùng Lambda integration và bấm **Save**.
 
-![Figure 32. Root method](/images/5-Workshop/5.4-Edms-deployment/root-method.png)
 
 > **Ghi chú:** Resource `{proxy+}` cho phép API Gateway chuyển tiếp mọi path (`/auth/login`, `/documents`, ...) đến Lambda, nơi nó route bên trong ứng dụng Spring Boot. Đây là điều làm cho toàn bộ backend truy cập được qua một API duy nhất.

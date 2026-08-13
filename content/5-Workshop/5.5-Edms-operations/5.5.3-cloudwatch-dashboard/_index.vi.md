@@ -13,7 +13,6 @@ Một **CloudWatch Dashboard** cung cấp một cái nhìn tổng hợp về s�
 1. Mở **CloudWatch console** → **Dashboards** → **Create dashboard**.
 2. Đặt tên dashboard, ví dụ `edms-dashboard`, và bấm **Create**.
 
-![Figure 43. Tạo dashboard](/images/5-Workshop/5.5-Edms-operations/create-dashboard.png)
 
 ### 5.5.3.2 Thêm Lambda widget
 
@@ -47,6 +46,5 @@ Một **CloudWatch Dashboard** cung cấp một cái nhìn tổng hợp về s�
 2. Bấm **Save dashboard**.
 3. Mở lại dashboard sau đó để xem chế độ xem trực tiếp về sức khỏe ứng dụng.
 
-![Figure 44. Thêm widget](/images/5-Workshop/5.5-Edms-operations/add-widget.png)
 
 > **Ghi chú:** Dashboard là **read-only** và rất rẻ. Nó không tự đưa ra cảnh báo — nó chỉ giúp bạn phát hiện bất thường trong một cái nhìn trước khi chúng ảnh hưởng đến người dùng.

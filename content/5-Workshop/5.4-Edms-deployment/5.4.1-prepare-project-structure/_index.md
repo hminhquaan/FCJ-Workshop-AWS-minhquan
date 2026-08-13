@@ -71,4 +71,3 @@ The backend is a **monolith**: one Spring Boot application that contains the RES
 
 > **Note:** This "serverless monolith" trade-off is intentional for the workshop. It keeps the deployment simple (one Lambda) while still giving you a single source of truth for the backend. `template.yaml` defines how the jar is turned into a Lambda function.
 
-![Figure 15. Backend to Lambda mapping](/images/5-Workshop/5.4-Edms-deployment/backend-to-lambda.png)

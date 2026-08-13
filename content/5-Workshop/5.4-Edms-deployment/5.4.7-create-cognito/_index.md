@@ -21,7 +21,6 @@ The Cognito User Pool created in 5.3.4 provides authentication. In this section 
 3. Tick **Mark as verified** for the email (optional, avoids the verification flow during testing).
 4. Click **Create user**.
 
-![Figure 21. Create user](/images/5-Workshop/5.4-Edms-deployment/create-user.png)
 
 Repeat for at least three users: one for each role (`ADMIN`, `MANAGER`, `USER`).
 
@@ -32,7 +31,6 @@ Repeat for at least three users: one for each role (`ADMIN`, `MANAGER`, `USER`).
 3. Click **Add user to group**.
 4. Select one of `ADMIN`, `MANAGER`, `USER` and click **Add user to group**.
 
-![Figure 22. Assign group](/images/5-Workshop/5.4-Edms-deployment/assign-group.png)
 
 Repeat so that each of your test users belongs to the intended role group.
 

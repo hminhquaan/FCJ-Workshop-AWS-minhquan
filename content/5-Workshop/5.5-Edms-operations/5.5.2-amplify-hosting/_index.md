@@ -16,7 +16,6 @@ pre : " <b> 5.5.2 </b> "
 4. Select the **EDMS repository** and the **`main`** branch.
 5. Click **Next**.
 
-![Figure 40. Amplify connect](/images/5-Workshop/5.5-Edms-operations/amplify-connect.png)
 
 > **Note:** The frontend lives in the `frontend/` subfolder of the repository, so you must point the build at that directory.
 

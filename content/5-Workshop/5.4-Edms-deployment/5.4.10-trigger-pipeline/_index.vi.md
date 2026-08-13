@@ -32,7 +32,6 @@ Vì workflow khai báo `workflow_dispatch` trong khối `on`, bạn có thể kh
 4. Chọn **branch** (ví dụ `main`).
 5. Bấm **Run workflow**.
 
-![Figure 28. Chạy workflow thủ công](/images/5-Workshop/5.4-Edms-deployment/run-workflow-manually.png)
 
 ### 5.4.10.3 Theo dõi run
 

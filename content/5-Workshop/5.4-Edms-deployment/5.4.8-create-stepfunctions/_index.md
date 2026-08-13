@@ -15,7 +15,6 @@ EDMS orchestrates the **document approval workflow** with **AWS Step Functions**
 3. **Name:** `edms-notifications`.
 4. Leave the other settings at their defaults and click **Create topic**.
 
-![Figure 23. SNS topic](/images/5-Workshop/5.4-Edms-deployment/sns-topic.png)
 
 5. Copy the **topic ARN** — you will set it as the `SNS_TOPIC_ARN` secret (5.4.5) and reference it in the state machine.
 
@@ -45,6 +44,7 @@ CaptureToken (waitForTaskToken)  ── waits indefinitely
    → Decision (Choice)            ── APPROVE / REJECT
    → MarkApproved / MarkRejected  ── update DB via Lambda
    → NotifyApproved / NotifyRejected  ── publish to SNS
+![Figure 24. State machine flow](/images/5-Workshop/5.4-Edms-deployment/statemachine.png)
 ```
 
 

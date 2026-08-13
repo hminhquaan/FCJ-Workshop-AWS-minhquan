@@ -21,7 +21,6 @@ Cognito User Pool tạo ở 5.3.4 cung cấp xác thực. Trong phần này bạ
 3. Tick **Mark as verified** cho email (tùy chọn, tránh flow xác minh khi test).
 4. Bấm **Create user**.
 
-![Figure 21. Tạo user](/images/5-Workshop/5.4-Edms-deployment/create-user.png)
 
 Lặp lại cho ít nhất ba user: mỗi user cho một vai trò (`ADMIN`, `MANAGER`, `USER`).
 
@@ -32,7 +31,6 @@ Lặp lại cho ít nhất ba user: mỗi user cho một vai trò (`ADMIN`, `MAN
 3. Bấm **Add user to group**.
 4. Chọn một trong `ADMIN`, `MANAGER`, `USER` rồi bấm **Add user to group**.
 
-![Figure 22. Gán nhóm](/images/5-Workshop/5.4-Edms-deployment/assign-group.png)
 
 Lặp lại để mỗi user test thuộc nhóm vai trò dự định.
 

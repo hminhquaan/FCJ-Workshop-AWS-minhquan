@@ -16,7 +16,6 @@ Phần này hoàn tất tích hợp API Gateway ↔ Lambda và **deploy** API l�
 4. Bấm **Save**.
 5. Nếu được nhắc, cấp quyền cho API Gateway invoke Lambda bằng cách bấm **OK**.
 
-![Figure 33. Lambda integration](/images/5-Workshop/5.4-Edms-deployment/lambda-integration.png)
 
 > **Ghi chú:** Quyền invoke (một tài nguyên `AWS::Lambda::Permission`) là thứ cho phép API Gateway gọi hàm. Thiếu nó, các lệnh gọi trả về `403 Forbidden` với lỗi `Missing Authentication Token` hoặc access-denied.
 
@@ -29,7 +28,6 @@ Một API Gateway cần được **deploy lên một stage** trước khi có UR
 3. (Tùy chọn) Thêm mô tả stage.
 4. Bấm **Deploy**.
 
-![Figure 34. Deploy API](/images/5-Workshop/5.4-Edms-deployment/deploy-api.png)
 
 ### 5.4.12.3 Lấy invoke URL
 

@@ -29,7 +29,6 @@ By default Lambda can burst up to the account limit. If you want to **cap** how 
 4. Select **Reserve concurrency** and set a value (e.g. `5`).
 5. Click **Save**.
 
-![Figure 38. Lambda concurrency](/images/5-Workshop/5.5-Edms-operations/lambda-concurrency.png)
 
 > **Note:** In `template.yaml` this is set with the `ReservedConcurrentExecutions` property on the function resource. A value of `0` disables the function; any other value becomes the hard limit for concurrent executions.
 

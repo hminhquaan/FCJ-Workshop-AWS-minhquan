@@ -16,8 +16,8 @@ Amazon Cognito cung cấp xác thực và phân quyền theo vai trò cho EDMS. 
 ### 5.3.4.2 Tạo User Pool
 
 1. Bấm **Create user pool**.
-
 ![Figure 11. Tạo user pool](/images/5-Workshop/5.3-Edms-infrastructure/create-userpool.png)
+
 
 2. Trong **Configure sign-in experience**:
 + **Sign-in options:** chọn **Email**.

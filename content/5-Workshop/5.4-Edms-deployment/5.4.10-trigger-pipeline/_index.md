@@ -32,7 +32,6 @@ Because the workflow declares `workflow_dispatch` in its `on` block, you can sta
 4. Choose the **branch** (e.g. `main`).
 5. Click **Run workflow**.
 
-![Figure 28. Run workflow manually](/images/5-Workshop/5.4-Edms-deployment/run-workflow-manually.png)
 
 ### 5.4.10.3 Monitor the run
 
