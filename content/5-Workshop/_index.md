@@ -21,16 +21,12 @@ In this workshop, you will build an EDMS **from scratch** on AWS, service by ser
 + **Workflow (AWS Step Functions + SNS)** — orchestrate the document approval flow with email notifications
 + **Hosting (AWS Amplify)** — serve the React frontend over HTTPS
 
-![architecture](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
-
 #### Content
 
-1. [Workshop overview](5.1-Workshop-overview)
+1. [Introduction](5.1-Workshop-overview)
 2. [Prerequisites](5.2-Prerequiste/)
-3. [Storage & Database](5.3-Storage-db/)
-4. [Authentication (Cognito)](5.4-Auth/)
-5. [Compute (Lambda & API Gateway)](5.5-Compute/)
-6. [Approval Workflow (Step Functions & SNS)](5.6-Approval/)
-7. [Hosting (Amplify) & Cleanup](5.7-Hosting/)
+3. [Design and Build EDMS Infrastructure on AWS](5.3-Edms-infrastructure/)
+4. [Deploying EDMS on AWS](5.4-Edms-deployment/)
+5. [Testing, Operations, and Continuous Deployment](5.5-Edms-operations/)
 
-> **Note:** Instructions for a service are written in a generic way so you can follow along on the AWS Console. Where a screenshot is needed, a placeholder is left for you to capture your own setup on the AWS platform.
+> **Note:** Instructions for each service are written step-by-step as you would perform them on the AWS Console. Where a screenshot is needed, a **Figure** placeholder is left for you to capture your own setup on the AWS platform.
