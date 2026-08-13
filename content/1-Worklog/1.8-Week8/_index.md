@@ -1,13 +1,10 @@
----
+﻿---
 title: "Week 8 Worklog"
 date: 2024-01-01
 weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
 ### Week 8 Objectives:
 
@@ -30,5 +27,5 @@ pre: " <b> 1.8. </b> "
 * Built and hosted the React frontend on AWS Amplify over HTTPS.
 * Configured the Amplify environment variables (API URL, Cognito IDs).
 * Ran end-to-end tests of the full application.
-* Verified the approval workflow: the document moved through DRAFT → PENDING → APPROVED, the Step Functions execution succeeded, and the SNS email was delivered.
+* Verified the approval workflow: the document moved through DRAFT â†’ PENDING â†’ APPROVED, the Step Functions execution succeeded, and the SNS email was delivered.
 * Finalized the demo and the internship report.

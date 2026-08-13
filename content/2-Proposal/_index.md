@@ -5,101 +5,187 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
 
 # Enterprise Document Collaboration Platform (EDMS)
-## A Unified AWS Serverless Solution for Document Management
 
-### 1. Executive Summary
-The Enterprise Document Collaboration Platform (EDMS) is a cloud-native document management system that lets enterprises store, version, share, and approve documents through a central, secure web platform. It replaces scattered emails and local file servers with a single serverless architecture on AWS. The platform supports role-based access (ADMIN / MANAGER / USER), an automated approval workflow, and email notifications, all with near-zero operational overhead.
+## Serverless Document Management on the AWS Platform
+
+### 1. Project Overview
+
+EDMS (Enterprise Document Management System) is a cloud-native document collaboration platform that allows enterprises to store, version, share, and approve documents through a central, secure, web-based system. The system includes features such as role-based access control (ADMIN / MANAGER / USER), document and folder management, versioning, sharing with controlled permissions, tags, search, and an automated approval workflow with email notifications. Because the system must serve many users across departments while keeping operational cost low, it requires a flexible, scalable, highly available, and easy-to-maintain infrastructure.
+
+This proposal presents a solution for deploying the EDMS system on the Amazon Web Services (AWS) platform using a fully **serverless** architecture that meets requirements for scalability, high availability, security, and automated release processes. The objective is to build a reusable serverless infrastructure that supports iterative deployments and standardizes operational procedures according to DevOps practices in a production environment.
+
+The proposal focuses on building an AWS serverless architecture with **AWS Lambda** and **Amazon API Gateway** for compute, **Amazon Aurora MySQL** for the database, **Amazon S3** for file storage, **Amazon Cognito** for authentication, **AWS Step Functions** for the approval workflow, **Amazon SNS** for notifications, and **AWS Amplify** for frontend hosting. Source code is managed on GitHub, with automated Build–Test–Deploy workflows through GitHub Actions and OpenID Connect (OIDC), and infrastructure provisioned by AWS SAM / CloudFormation. The solution aims to establish a unified, secure, and scalable deployment workflow for the project.
+
+---
 
 ### 2. Problem Statement
-#### What's the Problem?
-Small and medium enterprises manage internal documents (contracts, HR files, department reports) in a fragmented way — across email, personal Google Drive, and on-premise file servers. This leads to: no control over who accesses which document, no approval process before a document is published, fixed infrastructure costs regardless of usage, and difficulty auditing document history.
 
-#### The Solution
-EDMS solves this with a fully serverless AWS architecture: **Amazon S3** stores files, **Amazon Aurora MySQL** stores metadata, **AWS Lambda + API Gateway** run the Spring Boot backend, **Amazon Cognito** provides authentication and role-based authorization, **AWS Step Functions** orchestrates the document approval workflow, **Amazon SNS** sends email notifications, and **AWS Amplify** hosts the React frontend. It scales automatically, charges only for actual usage, and keeps idle cost near zero.
+#### Current Status
 
-#### Benefits and Return on Investment
-The platform eliminates manual document handling, enforces an approval gate before publication, centralizes access control and audit history, and reduces infrastructure cost by scaling to zero when idle. As infrastructure as code (AWS SAM), it is reproducible and cheap to operate.
+Prior to implementing the proposal, the enterprise document management workflow was fragmented across emails, personal Google Drive, and on-premise file servers. Specifically:
+
+- **Lack of centralized control:** There was no control over who could access which document, and no audit history of actions.
+- **No approval process:** Documents could be published without an approval gate before becoming official.
+- **Fixed infrastructure cost:** On-premise file servers incurred fixed costs regardless of actual usage.
+- **Manual, non-automated deployment:** The application was not standardized into a cloud-native, automated deployment pipeline.
+
+#### Objectives
+
+The proposal aims for the following technical objectives:
+
+- Provide centralized, role-based access control for documents.
+- Automate the document approval workflow (submit → approve/reject → notify).
+- Eliminate the use of AWS Access Keys in GitHub via OpenID Connect (OIDC).
+- Standardize the deployment process using infrastructure as code (AWS SAM).
+- Ensure high availability and automatic scaling of the system.
+- Establish centralized monitoring, logging, and alerting mechanisms.
+- Follow the DevOps model and improve reusability.
+
+#### Solution
+
+- Design the AWS serverless architecture.
+- Build the CI/CD pipeline with GitHub Actions + SAM.
+- Deploy the Spring Boot backend as a single Lambda behind API Gateway.
+- Store documents in Amazon S3 and metadata in Aurora MySQL.
+- Provide authentication and role-based access with Amazon Cognito.
+- Orchestrate approval with AWS Step Functions and send email via SNS.
+- Host the React frontend on AWS Amplify.
+- Build logging and monitoring systems with CloudWatch.
+
+#### Return on Investment (ROI)
+
+System standardization and automation deliver practical value:
+
+- **Cost Efficiency:** The serverless model ensures payment only for actual resources used, with idle cost near zero.
+- **Time-to-Market:** Automated CI/CD pipelines reduce the time required to release new features.
+- **High Availability:** Automatically scaling, managed services achieve high uptime and minimize downtime.
+- **Security and Better Control:** AWS security standards combined with role-based access control and monitoring protect data and proactively detect vulnerabilities.
+
+---
 
 ### 3. Solution Architecture
-The platform employs a serverless AWS architecture:
 
-![EDMS Architecture](/images/2-Proposal/edms_architecture.png)
+#### Overall Architecture
 
-1. User signs in via **Cognito** and receives a JWT token.
-2. The React frontend calls **API Gateway** with the token.
-3. **API Gateway** forwards requests to **Lambda** (Spring Boot), which validates the token.
-4. **Lambda** reads/writes metadata in **Aurora** and stores files in **S3**.
-5. On document submission, **Lambda** starts a **Step Functions** execution.
-6. **Step Functions** orchestrates approval and publishes notifications via **SNS**.
+![EDMS System Architecture](/images/2-Proposal/edms_architecture.png)
 
-#### AWS Services Used
-- **Amazon S3**: Stores original document files (private, accessed via pre-signed URLs).
-- **Amazon Aurora MySQL**: Stores relational metadata (users, documents, versions, permissions, approval history).
-- **AWS Lambda**: Runs the Spring Boot backend monolith (Java 17).
-- **Amazon API Gateway**: Exposes the backend as a REST API.
-- **Amazon Cognito**: Provides authentication and role-based access (ADMIN/MANAGER/USER).
-- **AWS Step Functions**: Orchestrates the document approval workflow (waitForTaskToken).
-- **Amazon SNS**: Sends email notifications on approve/reject.
-- **AWS Amplify**: Hosts the React frontend over HTTPS.
-- **Amazon CloudWatch**: Logs and metrics.
-- **AWS SAM / CloudFormation + GitHub Actions**: Infrastructure as code and CI/CD.
+The deployment architecture is fully serverless:
 
-#### Component Design
-- **Frontend**: React 18 SPA hosted on Amplify.
-- **Backend**: Spring Boot (Java 17) packaged as a single Lambda.
-- **Data Storage**: Aurora for metadata, S3 for files.
-- **Workflow**: Step Functions with waitForTaskToken for human approval.
-- **User Management**: Cognito groups map to application roles.
+- **Frontend hosting:** The React SPA is hosted on AWS Amplify and served over HTTPS.
+- **API processing:** Amplify forwards requests to Amazon API Gateway, which routes them to a single AWS Lambda running the Spring Boot backend.
+- **Authentication:** Amazon Cognito issues JWT tokens and provides role-based authorization (ADMIN / MANAGER / USER).
+- **Database:** Amazon Aurora MySQL stores all relational metadata (users, documents, versions, folders, permissions, tags, shares, approval history).
+- **Storage:** Amazon S3 stores the original document files, accessed privately via pre-signed URLs.
+- **Approval workflow:** AWS Step Functions orchestrates the document approval flow using the Wait for Task Token pattern; Amazon SNS sends email notifications.
+- **CI/CD:** Source code is pushed to GitHub. GitHub Actions uses OIDC to authenticate to AWS STS and runs `sam deploy`.
+- **Security and infrastructure:** AWS IAM manages access permissions; AWS SAM / CloudFormation standardizes infrastructure provisioning.
+- **System observability:** Amazon CloudWatch collects logs and metrics.
 
-### 4. Technical Implementation
-**Implementation Phases**
-- Build Theory and Draw Architecture: Research AWS serverless and design the EDMS architecture (pre-internship).
-- Set Up Infrastructure: Create S3, Aurora, Cognito, IAM roles on AWS (Weeks 1-2).
-- Build Backend: Implement Spring Boot backend (auth, documents, folders, permissions, versions, tags, search) (Weeks 3-5).
-- Build Workflow & CI/CD: Add Step Functions approval, SNS notifications, SAM template, GitHub Actions (Weeks 6-7).
-- Deploy & Test: Deploy backend via SAM, host frontend on Amplify, run end-to-end tests (Week 8).
+#### Architecture Components
 
-**Technical Requirements**
-- Java 17 (Spring Boot), Spring Data JPA, Spring Security, AWS SDK v2.
-- AWS services: S3, Aurora, Lambda, API Gateway, Cognito, Step Functions, SNS, Amplify, CloudWatch.
-- React 18 for the frontend.
-- AWS SAM + GitHub Actions for deployment.
+| AWS Service | Service Type | Role & Function in the System |
+| ----------- | ------------ | ----------------------------- |
+| **AWS IAM** | Identity & Access Management | Manages users, groups, roles, and security policies; used for the Lambda execution role and the OIDC deploy role. |
+| **AWS Lambda** | Serverless Compute | Runs the Spring Boot (Java 17) backend monolith. |
+| **Amazon API Gateway** | API Gateway | Exposes the backend as a REST API and routes requests to Lambda. |
+| **Amazon Cognito** | Authentication | Provides sign-in and role-based authorization via JWT. |
+| **Amazon Aurora** | Relational Database | Stores relational metadata (MySQL-compatible). |
+| **Amazon S3** | Object Storage | Stores original document files, accessed via pre-signed URLs. |
+| **AWS Step Functions** | Workflow Orchestration | Orchestrates the document approval workflow (waitForTaskToken). |
+| **Amazon SNS** | Notification Service | Sends email notifications on approve/reject. |
+| **AWS Amplify** | Frontend Hosting | Hosts the React frontend over HTTPS. |
+| **Amazon CloudWatch** | Monitoring & Observability | Collects logs and metrics, and configures dashboards and alarms. |
 
-### 5. Timeline & Milestones
-- **Week 1-2**: AWS account setup, create S3/Aurora/Cognito/IAM.
-- **Week 3-5**: Build backend core features.
-- **Week 6-7**: Approval workflow (Step Functions + SNS) and CI/CD.
-- **Week 8**: Deploy, host frontend, and end-to-end test.
+#### AWS Well-Architected Framework
 
-### 6. Budget Estimation
-As a serverless architecture, EDMS costs only for actual usage:
-- AWS Lambda: pay per invocation.
-- Amazon S3: pay per GB stored.
-- Amazon Aurora: only source of steady cost — stop/delete when idle.
-- Amplify, API Gateway, Cognito, SNS, Step Functions: free tier or near-zero.
+| Pillar | Applied Solution |
+| ------ | ---------------- |
+| Operational Excellence | GitHub Actions CI/CD, AWS SAM / CloudFormation, CloudWatch. |
+| Security | IAM Least Privilege, Cognito auth, private S3 bucket, no AWS keys in GitHub (OIDC). |
+| Reliability | Serverless managed services, Step Functions retries, CloudWatch monitoring. |
+| Performance Efficiency | Lambda + API Gateway auto scaling, S3 + pre-signed URLs. |
+| Cost Optimization | Pay-as-you-go serverless, stop/delete Aurora when idle. |
+| Sustainability | Scale on demand; only pay for actual usage. |
 
-> Use the AWS Pricing Calculator to estimate your specific usage. Aurora is the main cost driver, so it should be stopped or deleted when not in use.
+---
 
-### 7. Risk Assessment
+### 4. Timeline & Milestones
+
+| Phase | Duration | Main Tasks |
+| ----- | -------- | ---------- |
+| **Week 1: Research & Design** | 22/06/2026 - 26/06/2026 | - Explore AWS Foundations (Global Infrastructure, IAM, EC2, S3). <br> - Design the system architecture and data flow. |
+| **Week 2: Storage & Security** | 29/06/2026 - 03/07/2026 | - Learn Amazon S3, IAM, and Git. <br> - Practice S3 + IAM + Git. |
+| **Week 3: Database & Design** | 06/07/2026 - 10/07/2026 | - Learn Aurora MySQL and design the EDMS data model. <br> - Create S3, Aurora, IAM, Cognito. |
+| **Week 4: Backend Development** | 13/07/2026 - 17/07/2026 | - Set up Spring Boot backend. <br> - Implement Cognito auth + JWT. <br> - Implement document and folder CRUD. |
+| **Week 5: Backend Advanced** | 20/07/2026 - 24/07/2026 | - Implement permissions, versioning, tags, search, sharing, dashboard. <br> - Write unit tests. |
+| **Week 6: Approval Workflow** | 27/07/2026 - 31/07/2026 | - Learn Step Functions (waitForTaskToken). <br> - Create SNS topic. <br> - Build the approval state machine. |
+| **Week 7: CI/CD & Deploy** | 03/08/2026 - 07/08/2026 | - Package backend as Lambda (SAM). <br> - Configure OIDC + GitHub secrets. <br> - Write GitHub Actions workflow and deploy. |
+| **Week 8: Hosting & Go-Live** | 10/08/2026 - 15/08/2026 | - Host frontend on Amplify. <br> - Run end-to-end tests. <br> - Finalize the report and demo. |
+
+---
+
+### 5. Estimated Budget
+
+The system makes maximum use of the **AWS Free Tier** and **Serverless Pay-As-You-Go** model, paying only for the resources actually used.
+
+| AWS Service | Estimated Usage / Phase | Estimated Cost (USD) |
+| ----------- | ----------------------- | -------------------- |
+| **AWS Lambda** | Spring Boot monolith, invoked via API Gateway | **~$0 - $5** |
+| **Amazon API Gateway** | REST API requests | **~$0 - $1** |
+| **Amazon Aurora MySQL** | Relational metadata database | **~$5 - $15** (main cost driver) |
+| **Amazon S3** | Document storage + pre-signed URLs | **~$1 - $3** |
+| **Amazon Cognito** | User pool (free tier) | **~$0** |
+| **AWS Step Functions** | Approval workflow executions | **~$0 - $2** |
+| **Amazon SNS** | Email notifications (free tier) | **~$0** |
+| **AWS Amplify** | Frontend hosting | **~$1 - $3** |
+| **Amazon CloudWatch** | Logs and metrics | **~$1 - $3** |
+| **Estimated total per month** | | **~$8 - $30** |
+
+In addition, the proposal applies cost optimization measures such as:
+
+- Configuring **AWS Budgets** and SNS alerts at 50%, 80%, and 100% of the monthly budget.
+- Stopping or deleting **Aurora** when not in use (the main cost driver).
+- Using the AWS Free Tier where possible.
+- Deleting or stopping unused resources in the staging environment after testing.
+
+---
+
+### 6. Risk Assessment
+
 #### Risk Matrix
-- Aurora cost overruns: Medium impact, medium probability.
-- Cold start latency on Java Lambda: Medium impact, low probability.
-- Approval workflow failures: Low impact, low probability.
 
-#### Mitigation Strategies
-- Cost: budget alerts, stop/delete Aurora when idle.
-- Cold start: warm-up invocation or provisioned concurrency.
-- Workflow: Step Functions retries and CloudWatch monitoring.
+| Risk | Likelihood | Impact |
+| ---- | ---------- | ------ |
+| AWS costs exceed forecast (mainly Aurora) | Medium | Medium |
+| Lambda cold start latency | Medium | Low |
+| Approval workflow failure | Low | Medium |
+| Sensitive information exposure | Low | Very High |
+| Sudden traffic spike | Medium | Low |
+| Insufficient logs or alerts | Medium | Medium |
+| Error during new version deployment | Medium | Medium |
 
-### 8. Expected Outcomes
-#### Technical Improvements
-A centralized, secure document platform with approval workflow and audit history, replacing manual processes.
-#### Long-term Value
-Reusable serverless architecture, infrastructure as code, and a foundation for further feature development.
+#### Contingency and Response Plan
+
+- Address cost alerts immediately upon reaching budget thresholds; stop or delete Aurora when not in use.
+- When API errors occur, check CloudWatch Logs and Step Functions executions before rolling back or deploying a fix.
+- Upon detecting signs of credential exposure, revoke or rotate the secret, review IAM permissions, and audit the deployment history.
+- Use Step Functions retries and CloudWatch alarms to handle workflow and traffic issues.
+
+---
+
+### 7. Expected Outcomes
+
+After completing the deployment process, the system is expected to achieve the following results:
+
+- **Technical improvement:** Replacing manual document handling and scattered storage with a centralized, secure, serverless document platform that can be monitored, scaled, and automatically deployed on AWS, including an automated approval workflow.
+- **Long-term value:** Establishing a reusable serverless architecture and infrastructure as code, laying the groundwork for expanding features such as advanced analytics, OCR, and integrations with other enterprise systems in the future.
+
+---
+
+### 8. References
+
+[1]: [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/)
+[2]: [The First Cloud Journey](https://cloudjourney.awsstudygroup.com/)
+[3]: [AWS Documentation](https://docs.aws.amazon.com/)

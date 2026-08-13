@@ -1,13 +1,10 @@
----
+﻿---
 title: "Week 5 Worklog"
 date: 2024-01-01
 weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
 ### Week 5 Objectives:
 

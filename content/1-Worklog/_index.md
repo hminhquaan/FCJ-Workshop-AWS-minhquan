@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog"
 date: 2024-01-01
 weight: 1
@@ -6,9 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
 This worklog records my internship at **Amazon Web Services Vietnam** (Workforce Bootcamp - First Cloud AI Journey), from **22/06/2026 to 15/08/2026** (8 weeks). Over these weeks I learned AWS, then designed, built, and deployed the **Enterprise Document Collaboration Platform (EDMS)** on AWS.
 

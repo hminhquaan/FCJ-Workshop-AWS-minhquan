@@ -1,13 +1,10 @@
----
+﻿---
 title: "Week 6 Worklog"
 date: 2024-01-01
 weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
 ### Week 6 Objectives:
 
@@ -21,7 +18,7 @@ pre: " <b> 1.6. </b> "
 | --- | --- | --- | --- | --- |
 | 1 | - Study AWS Step Functions and state machine concepts | 27/07/2026 | 28/07/2026 | |
 | 2 | - Create the SNS topic and email subscription | 28/07/2026 | 28/07/2026 | |
-| 3 | - Design the approval state machine (CaptureToken → Decision → Mark → Notify) | 29/07/2026 | 29/07/2026 | |
+| 3 | - Design the approval state machine (CaptureToken â†’ Decision â†’ Mark â†’ Notify) | 29/07/2026 | 29/07/2026 | |
 | 4 | - Integrate Step Functions into the backend (startExecution, SendTaskSuccess) | 30/07/2026 | 31/07/2026 | |
 | 5 | - Handle the task token callback and update document status | 31/07/2026 | 01/08/2026 | |
 | 6 | - Test the full approval flow end-to-end | 01/08/2026 | 02/08/2026 | |
