@@ -1,4 +1,4 @@
----
+﻿---
 title : "Introduction"
 date : 2024-01-01 
 weight : 1 
@@ -20,7 +20,7 @@ The system has three account roles:
 
 The following diagram shows the architecture of the platform we will build:
 
-{{% mermaid %}}
+{{< mermaid >}}
 flowchart LR
     subgraph Client["Client"]
         U[User / Browser]
@@ -48,7 +48,7 @@ flowchart LR
     L -->|submit for approval| SF
     SF -->|notify| SNS
     L -.->|logs / metrics| CW
-{{% /mermaid %}}
+{{< /mermaid >}}
 
 The system is composed of the following services:
 

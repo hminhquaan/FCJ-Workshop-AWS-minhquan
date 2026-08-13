@@ -1,4 +1,4 @@
----
+﻿---
 title : "Giới thiệu"
 date : 2024-01-01 
 weight : 1 
@@ -20,7 +20,7 @@ Hệ thống có ba vai trò tài khoản:
 
 Sơ đồ dưới đây mô tả kiến trúc nền tảng chúng ta sẽ xây dựng:
 
-{{% mermaid %}}
+{{< mermaid >}}
 flowchart LR
     subgraph Client["Client"]
         U[User / Browser]
@@ -48,7 +48,7 @@ flowchart LR
     L -->|submit for approval| SF
     SF -->|notify| SNS
     L -.->|logs / metrics| CW
-{{% /mermaid %}}
+{{< /mermaid >}}
 
 Hệ thống bao gồm các dịch vụ sau:
 
