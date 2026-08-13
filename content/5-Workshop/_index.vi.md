@@ -6,28 +6,31 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
-# Đảm bảo truy cập Hybrid an toàn đến S3 bằng cách sử dụng VPC endpoint
+# Nền tảng Cộng tác Tài liệu Doanh nghiệp (EDMS) trên AWS
 
 #### Tổng quan
 
-**AWS PrivateLink** cung cấp kết nối riêng tư đến các dịch vụ aws từ VPCs hoặc trung tâm dữ liệu (on-premise) mà không làm lộ lưu lượng truy cập ra ngoài public internet.
+**EDMS (Enterprise Document Management System)** là một nền tảng cộng tác tài liệu doanh nghiệp, cloud-native, xây dựng hoàn toàn trên nền serverless của AWS. Hệ thống giúp doanh nghiệp lưu trữ, quản lý phiên bản, chia sẻ và phê duyệt tài liệu qua một nền tảng web tập trung, an toàn — thay vì rải rác qua email hoặc file server nội bộ.
 
-Trong bài lab này, chúng ta sẽ học cách tạo, cấu hình, và kiểm tra VPC endpoints để cho phép workload của bạn tiếp cận các dịch vụ AWS mà không cần đi qua Internet công cộng.
+Trong workshop này, bạn sẽ xây dựng một EDMS **từ đầu** trên AWS, từng dịch vụ một, theo đúng kiến trúc đang chạy trong production:
 
-Chúng ta sẽ tạo hai loại endpoints để truy cập đến Amazon S3: gateway vpc endpoint và interface vpc endpoint. Hai loại vpc endpoints này mang đến nhiều lợi ích tùy thuộc vào việc bạn truy cập đến S3 từ môi trường cloud hay từ trung tâm dữ liệu (on-premise).
-+ **Gateway** - Tạo gateway endpoint để gửi lưu lượng đến Amazon S3 hoặc DynamoDB using private IP addresses. Bạn điều hướng lưu lượng từ VPC của bạn đến gateway endpoint bằng các bảng định tuyến (route tables)
-+ **Interface** - Tạo interface endpoint để gửi lưu lượng đến các dịch vụ điểm cuối (endpoints) sử dụng Network Load Balancer để phân phối lưu lượng. Lưu lượng dành cho dịch vụ điểm cuối được resolved bằng DNS.
++ **Lưu trữ (Amazon S3)** — lưu các file tài liệu gốc
++ **Cơ sở dữ liệu (Amazon Aurora MySQL)** — lưu metadata: users, departments, documents, versions, folders, permissions, tags, shares, approval history
++ **Xác thực (Amazon Cognito)** — đăng nhập an toàn với phân quyền theo vai trò (ADMIN / MANAGER / USER)
++ **Compute (AWS Lambda + API Gateway)** — backend Spring Boot (Java 17) đóng gói thành 1 Lambda, phơi qua REST API
++ **Workflow (AWS Step Functions + SNS)** — điều phối quy trình phê duyệt tài liệu kèm thông báo email
++ **Hosting (AWS Amplify)** — phục vụ frontend React qua HTTPS
+
+![architecture](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
 
 #### Nội dung
 
-1. [Tổng quan về workshop](5.1-Workshop-overview/)
-2. [Chuẩn bị](5.2-Prerequiste/)
-3. [Truy cập đến S3 từ VPC](5.3-S3-vpc/)
-4. [Truy cập đến S3 từ TTDL On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (làm thêm)](5.5-Policy/)
-6. [Dọn dẹp tài nguyên](5.6-Cleanup/)
+1. [Tổng quan workshop](5.1-Workshop-overview)
+2. [Điều kiện tiên quyết](5.2-Prerequiste/)
+3. [Lưu trữ & Cơ sở dữ liệu](5.3-Storage-db/)
+4. [Xác thực (Cognito)](5.4-Auth/)
+5. [Compute (Lambda & API Gateway)](5.5-Compute/)
+6. [Quy trình phê duyệt (Step Functions & SNS)](5.6-Approval/)
+7. [Hosting (Amplify) & Dọn dẹp](5.7-Hosting/)
+
+> **Ghi chú:** Hướng dẫn cho từng dịch vụ được viết dạng tổng quát để bạn thao tác theo trên AWS Console. Chỗ nào cần ảnh chụp màn hình, sẽ để placeholder để bạn tự chụp ảnh minh chứng setup của mình trên nền tảng AWS.
