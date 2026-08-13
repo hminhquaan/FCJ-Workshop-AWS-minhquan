@@ -6,9 +6,11 @@ chapter : false
 pre : " <b> 5.4.10 </b> "
 ---
 
-Pipeline chạy tự động mỗi lần push lên `main`. Bạn cũng có thể kích hoạt thủ công.
+Pipeline chạy tự động mỗi lần push lên `main`. Nó cũng có thể được kích hoạt thủ công bằng `workflow_dispatch`.
 
-#### 5.4.10.1 Kích hoạt bằng push code
+### 5.4.10.1 Kích hoạt bằng push code
+
+Trigger `on.push.branches: [main]` của workflow tự khởi động khi bạn push lên `main`. Từ thư mục gốc:
 
 ```bash
 git add .
@@ -16,14 +18,26 @@ git commit -m "chore: trigger deployment"
 git push origin main
 ```
 
-Push lên `main` sẽ tự động khởi động workflow `EDMS CI/CD`.
+Push lên `main` sẽ tự động khởi động workflow `EDMS CI/CD`. Mở tab **Actions** để theo dõi.
 
-#### 5.4.10.2 Kích hoạt thủ công (workflow_dispatch)
+> **Ghi chú:** Chỉ commit vào nhánh `main` mới kích hoạt deploy. Push lên các nhánh khác chạy `test-backend` và `build-frontend`, nhưng job `deploy` bị bỏ qua vì điều kiện `if: github.ref == 'refs/heads/main'` (5.4.2).
 
-Nếu workflow của bạn có `workflow_dispatch`, bạn có thể kích hoạt thủ công:
+### 5.4.10.2 Kích hoạt thủ công (workflow_dispatch)
 
-1. Mở tab **Actions**.
-2. Chọn workflow `EDMS CI/CD`.
-3. Bấm **Run workflow**, chọn nhánh, rồi bấm **Run workflow**.
+Vì workflow khai báo `workflow_dispatch` trong khối `on`, bạn có thể khởi động thủ công:
 
-> **Ghi chú:** Chỉ các job thỏa điều kiện `if` của job deploy mới thực sự deploy. Job deploy chỉ chạy trên nhánh `main`.
+1. Mở tab **Actions** của repository.
+2. Chọn workflow `EDMS CI/CD` từ thanh bên trái.
+3. Bấm **Run workflow**.
+4. Chọn **branch** (ví dụ `main`).
+5. Bấm **Run workflow**.
+
+![Figure 28. Chạy workflow thủ công](/images/5-Workshop/5.4-Edms-deployment/run-workflow-manually.png)
+
+### 5.4.10.3 Theo dõi run
+
+1. Một run mới xuất hiện dưới workflow. Bấm vào nó để theo dõi ba job.
+2. Nếu bạn bật **required reviewers** (5.4.6), hãy phê duyệt job `deploy` khi được nhắc.
+3. Xác nhận run kết thúc với dấu kiểm xanh và bước SAM deploy báo `Successfully created/updated stack - edms-lambda-stack`.
+
+> **Ghi chú:** Chỉ các job thỏa điều kiện `if` của job deploy mới thực sự deploy. Job deploy chỉ chạy trên nhánh `main`, bất kể workflow được kích hoạt bằng cách nào.

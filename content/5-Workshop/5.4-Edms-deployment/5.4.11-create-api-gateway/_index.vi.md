@@ -6,26 +6,52 @@ chapter : false
 pre : " <b> 5.4.11 </b> "
 ---
 
-**API Gateway** phơi backend Lambda thành một REST API. Trong production điều này được định nghĩa trong `template.yaml` và được SAM tạo tự động.
+**API Gateway** phơi backend Lambda thành một REST API công khai. Trong production điều này được định nghĩa trong `template.yaml` và được SAM tạo tự động. Ở đây bạn tạo thủ công để hiểu các thành phần, dùng **REST API** với resource catch-all `{proxy+}`.
 
-#### 5.4.11.1 Tạo REST API
+### 5.4.11.1 Tạo REST API
 
 1. Mở **API Gateway console** → **Create API**.
-2. Chọn **REST API** (không phải HTTP API) và bấm **Build**.
+2. Trong **REST API** (không phải HTTP API), bấm **Build**.
 
 ![Figure 30. Tạo API](/images/5-Workshop/5.4-Edms-deployment/create-api.png)
 
-3. **Choose the protocol:** REST. **Create new API.** Đặt tên `edms-api`.
-4. Bấm **Create API**.
+3. **Choose the protocol:** REST. **Create new API.**
+4. **API name:** `edms-api`.
+5. Giữ **Endpoint Type** là **Regional** (hoặc chọn Edge cho dùng CDN).
+6. Bấm **Create API**.
 
-#### 5.4.11.2 Thêm resource proxy catch-all
+### 5.4.11.2 Thêm resource proxy catch-all
 
-1. Trên trang **Resources**, tạo một resource với path `{proxy+}`.
-2. Với resource `{proxy+}`, tạo method **ANY**.
-3. Đặt **Integration type** là **Lambda Function**, chọn Lambda EDMS và region.
+Một resource trong REST API tương ứng với một path. Để chuyển tiếp **mọi** path tới Lambda, thêm resource `{proxy+}`:
+
+1. Trên trang **Resources** của API, bấm **Actions** → **Create Resource**.
+2. Tick **Configure as proxy resource**.
+3. Trong **Resource Path**, giá trị trở thành `{proxy+}`.
+4. Bấm **Create Resource**.
+
+### 5.4.11.3 Cấu hình method ANY
+
+Proxy resource tự động có một method **ANY**. Cấu hình nó trỏ tới Lambda:
+
+1. Chọn method `ANY` dưới `{proxy+}`.
+2. Trong **Integration Request**, đặt:
+   + **Integration type:** Lambda Function
+   + **Lambda Region:** `ap-southeast-1`
+   + **Lambda Function:** Lambda EDMS của bạn (ví dụ `EdmsBackendFunction`)
+3. Bấm **Save**.
 
 ![Figure 31. Proxy method](/images/5-Workshop/5.4-Edms-deployment/proxy-method.png)
 
-4. Lặp lại cho resource gốc `/` với method **ANY** (hoặc `GET` cho health check).
+4. API Gateway sẽ nhắc cấp quyền invoke Lambda — bấm **OK** để cho phép.
 
-> **Ghi chú:** Resource `{proxy+}` cho phép API Gateway chuyển tiếp mọi path (`/auth/login`, `/documents`, ...) đến Lambda, nơi nó route bên trong ứng dụng Spring Boot.
+### 5.4.11.4 Thêm method ở root
+
+Để health check hoặc root API, thêm method **ANY** (hoặc `GET`) trên resource gốc `/`:
+
+1. Chọn resource gốc `/`.
+2. Bấm **Actions** → **Create Method** → chọn **ANY** (hoặc `GET`).
+3. Đặt cùng Lambda integration và bấm **Save**.
+
+![Figure 32. Root method](/images/5-Workshop/5.4-Edms-deployment/root-method.png)
+
+> **Ghi chú:** Resource `{proxy+}` cho phép API Gateway chuyển tiếp mọi path (`/auth/login`, `/documents`, ...) đến Lambda, nơi nó route bên trong ứng dụng Spring Boot. Đây là điều làm cho toàn bộ backend truy cập được qua một API duy nhất.

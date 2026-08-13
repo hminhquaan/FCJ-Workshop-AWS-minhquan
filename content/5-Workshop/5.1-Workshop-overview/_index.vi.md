@@ -6,17 +6,17 @@ chapter : false
 pre : " <b> 5.1. </b> "
 ---
 
-#### Thứ bạn sẽ xây dựng
+### 5.1.1 Thứ bạn sẽ xây dựng
 
 **EDMS** là nền tảng cộng tác tài liệu cho phép người dùng tải lên tài liệu, tổ chức vào thư mục, quản lý phiên bản, chia sẻ với quyền kiểm soát, và đưa vào quy trình phê duyệt. Hệ thống hoàn toàn serverless: chỉ trả tiền theo mức sử dụng thực tế, tự động scale, không phải quản lý server.
 
 Hệ thống có ba vai trò tài khoản:
 
-+ **ADMIN** — quản lý người dùng, phòng ban và toàn hệ thống
-+ **MANAGER** — phê duyệt / từ chối tài liệu
-+ **USER** — tạo, tải lên, chỉnh sửa và nộp tài liệu
+- **ADMIN** — quản lý người dùng, phòng ban và toàn hệ thống.
+- **MANAGER** — phê duyệt / từ chối tài liệu.
+- **USER** — tạo, tải lên, chỉnh sửa và nộp tài liệu.
 
-#### Kiến trúc
+### 5.1.2 Kiến trúc
 
 Sơ đồ dưới đây mô tả kiến trúc nền tảng chúng ta sẽ xây dựng:
 
@@ -65,7 +65,7 @@ Hệ thống bao gồm các dịch vụ sau:
 | Giám sát | **Amazon CloudWatch** | Log và metric |
 | CI/CD | **GitHub Actions + AWS SAM** | Build, test, deploy hạ tầng as code |
 
-#### Các dịch vụ phối hợp như thế nào
+### 5.1.3 Các dịch vụ phối hợp như thế nào
 
 1. Người dùng đăng nhập với **Cognito**, nhận **JWT token**.
 2. Frontend React gọi **API Gateway** kèm token.

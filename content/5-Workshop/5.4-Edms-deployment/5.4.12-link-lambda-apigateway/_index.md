@@ -6,26 +6,51 @@ chapter : false
 pre : " <b> 5.4.12 </b> "
 ---
 
-This section links the API Gateway methods to the Lambda and **deploys** the API to a stage so it has a public invoke URL.
+This section finalizes the API Gateway ↔ Lambda integration and **deploys** the API to a stage so it has a public invoke URL.
 
-#### 5.4.12.1 Configure the Lambda integration
+### 5.4.12.1 Configure the Lambda integration
 
-1. On the method you created, open **Integration Request**.
-2. Confirm **Integration type = Lambda Function**, the correct region, and the EDMS Lambda function name.
-3. Click **Save** and grant API Gateway permission to invoke the Lambda (the console prompts you).
+1. In the API Gateway console, open your `edms-api` and select the `ANY` method under `{proxy+}`.
+2. Open **Integration Request**.
+3. Confirm **Integration type = Lambda Function**, the correct **region**, and the EDMS Lambda function name.
+4. Click **Save**.
+5. If prompted, grant API Gateway permission to invoke the Lambda by clicking **OK**.
 
-![Figure 32. Lambda integration](/images/5-Workshop/5.4-Edms-deployment/lambda-integration.png)
+![Figure 33. Lambda integration](/images/5-Workshop/5.4-Edms-deployment/lambda-integration.png)
 
-#### 5.4.12.2 Deploy the API
+> **Note:** The invoke permission (an `AWS::Lambda::Permission` resource) is what lets API Gateway call the function. Without it, calls return `403 Forbidden` with `Missing Authentication Token` or an access-denied error.
 
-1. In the API Gateway console, click **Deploy API**.
+### 5.4.12.2 Deploy the API
+
+An API Gateway API needs to be **deployed to a stage** before it has a usable URL:
+
+1. Click **Deploy API**.
 2. **Stage:** select `Prod`, or create a **New stage** named `Prod`.
-3. Click **Deploy**.
+3. (Optional) Add a stage description.
+4. Click **Deploy**.
 
-![Figure 33. Deploy API](/images/5-Workshop/5.4-Edms-deployment/deploy-api.png)
+![Figure 34. Deploy API](/images/5-Workshop/5.4-Edms-deployment/deploy-api.png)
 
-4. Copy the **Invoke URL**, e.g. `https://xxxx.execute-api.ap-southeast-1.amazonaws.com/Prod`.
+### 5.4.12.3 Retrieve the invoke URL
 
-![Figure 34. Invoke URL](/images/5-Workshop/5.4-Edms-deployment/invoke-url.png)
+1. After deploying, the console shows the **Invoke URL** for the `Prod` stage:
 
-> **Note:** Set this URL as `REACT_APP_API_URL` for the frontend and for the backend's public API base.
+```
+https://xxxx.execute-api.ap-southeast-1.amazonaws.com/Prod
+```
+
+![Figure 35. Invoke URL](/images/5-Workshop/5.4-Edms-deployment/invoke-url.png)
+
+2. Copy this URL — it is the public entry point for the whole backend.
+
+### 5.4.12.4 Test with curl
+
+Confirm the API responds before wiring up the frontend:
+
+```bash
+curl https://xxxx.execute-api.ap-southeast-1.amazonaws.com/Prod/health
+```
+
+A `200 OK` (or the Spring Boot health JSON) means the link is working.
+
+> **Note:** Set this URL as `REACT_APP_API_URL` for the frontend and as the backend's public API base so the app knows where to send requests.

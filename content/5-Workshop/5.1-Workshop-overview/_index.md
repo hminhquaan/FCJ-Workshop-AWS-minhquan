@@ -6,17 +6,17 @@ chapter : false
 pre : " <b> 5.1. </b> "
 ---
 
-#### What you will build
+### 5.1.1 What you will build
 
 **EDMS** is a document collaboration platform where users can upload documents, organize them in folders, manage versions, share them with controlled permissions, and submit them for an approval workflow. It is fully serverless: you only pay for what you use, it scales automatically, and there is no server to manage.
 
 The system has three account roles:
 
-+ **ADMIN** — manages users, departments, and the whole system
-+ **MANAGER** — approves / rejects documents
-+ **USER** — creates, uploads, edits, and submits documents
+- **ADMIN** — manages users, departments, and the whole system.
+- **MANAGER** — approves / rejects documents.
+- **USER** — creates, uploads, edits, and submits documents.
 
-#### Architecture
+### 5.1.2 Architecture
 
 The following diagram shows the architecture of the platform we will build:
 
@@ -65,7 +65,7 @@ The system is composed of the following services:
 | Observability | **Amazon CloudWatch** | Logs and metrics |
 | CI/CD | **GitHub Actions + AWS SAM** | Build, test, and deploy infrastructure as code |
 
-#### How the services work together
+### 5.1.3 How the services work together
 
 1. A user signs in with **Cognito**, receives a **JWT token**.
 2. The React frontend calls **API Gateway** with the token.

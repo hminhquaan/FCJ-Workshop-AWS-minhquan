@@ -6,26 +6,51 @@ chapter : false
 pre : " <b> 5.4.12 </b> "
 ---
 
-Phần này liên kết các method của API Gateway với Lambda và **deploy** API lên một stage để có invoke URL công khai.
+Phần này hoàn tất tích hợp API Gateway ↔ Lambda và **deploy** API lên một stage để có invoke URL công khai.
 
-#### 5.4.12.1 Cấu hình Lambda integration
+### 5.4.12.1 Cấu hình Lambda integration
 
-1. Trên method bạn đã tạo, mở **Integration Request**.
-2. Xác nhận **Integration type = Lambda Function**, đúng region, và tên Lambda EDMS.
-3. Bấm **Save** và cấp quyền cho API Gateway invoke Lambda (console sẽ nhắc).
+1. Trong API Gateway console, mở `edms-api` và chọn method `ANY` dưới `{proxy+}`.
+2. Mở **Integration Request**.
+3. Xác nhận **Integration type = Lambda Function**, đúng **region**, và tên Lambda EDMS.
+4. Bấm **Save**.
+5. Nếu được nhắc, cấp quyền cho API Gateway invoke Lambda bằng cách bấm **OK**.
 
-![Figure 32. Lambda integration](/images/5-Workshop/5.4-Edms-deployment/lambda-integration.png)
+![Figure 33. Lambda integration](/images/5-Workshop/5.4-Edms-deployment/lambda-integration.png)
 
-#### 5.4.12.2 Deploy API
+> **Ghi chú:** Quyền invoke (một tài nguyên `AWS::Lambda::Permission`) là thứ cho phép API Gateway gọi hàm. Thiếu nó, các lệnh gọi trả về `403 Forbidden` với lỗi `Missing Authentication Token` hoặc access-denied.
 
-1. Trong API Gateway console, bấm **Deploy API**.
+### 5.4.12.2 Deploy API
+
+Một API Gateway cần được **deploy lên một stage** trước khi có URL dùng được:
+
+1. Bấm **Deploy API**.
 2. **Stage:** chọn `Prod`, hoặc tạo **New stage** tên `Prod`.
-3. Bấm **Deploy**.
+3. (Tùy chọn) Thêm mô tả stage.
+4. Bấm **Deploy**.
 
-![Figure 33. Deploy API](/images/5-Workshop/5.4-Edms-deployment/deploy-api.png)
+![Figure 34. Deploy API](/images/5-Workshop/5.4-Edms-deployment/deploy-api.png)
 
-4. Sao chép **Invoke URL**, ví dụ `https://xxxx.execute-api.ap-southeast-1.amazonaws.com/Prod`.
+### 5.4.12.3 Lấy invoke URL
 
-![Figure 34. Invoke URL](/images/5-Workshop/5.4-Edms-deployment/invoke-url.png)
+1. Sau khi deploy, console hiển thị **Invoke URL** cho stage `Prod`:
 
-> **Ghi chú:** Đặt URL này làm `REACT_APP_API_URL` cho frontend và làm API base cho backend.
+```
+https://xxxx.execute-api.ap-southeast-1.amazonaws.com/Prod
+```
+
+![Figure 35. Invoke URL](/images/5-Workshop/5.4-Edms-deployment/invoke-url.png)
+
+2. Sao chép URL này — nó là điểm vào công khai cho toàn bộ backend.
+
+### 5.4.12.4 Test bằng curl
+
+Xác nhận API phản hồi trước khi nối frontend:
+
+```bash
+curl https://xxxx.execute-api.ap-southeast-1.amazonaws.com/Prod/health
+```
+
+Trả về `200 OK` (hoặc JSON health của Spring Boot) nghĩa là liên kết hoạt động.
+
+> **Ghi chú:** Đặt URL này làm `REACT_APP_API_URL` cho frontend và làm API base công khai của backend để ứng dụng biết nơi gửi request.

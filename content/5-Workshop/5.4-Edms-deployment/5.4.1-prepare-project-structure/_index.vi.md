@@ -6,25 +6,33 @@ chapter : false
 pre : " <b> 5.4.1 </b> "
 ---
 
-EDMS được lưu trong một Git repository gồm **backend** (Spring Boot), **frontend** (React), và **CI/CD** workflow.
+EDMS được lưu trong một Git repository gồm **backend** (monolith Spring Boot đóng gói thành một Lambda), **frontend** (React), và **CI/CD** workflow. Trong phần này bạn clone mã nguồn, xem cấu trúc thư mục, và xác minh backend biên dịch được ở local.
 
-#### 5.4.1.1 Clone repository
+### 5.4.1.1 Clone repository
+
+Mở terminal và clone fork của bạn về:
 
 ```bash
 git clone https://github.com/<account-cua-ban>/Enterprise-Document-Collaboration-Platform.git
 cd Enterprise-Document-Collaboration-Platform
 ```
 
-#### 5.4.1.2 Cấu trúc project
+Thay `<account-cua-ban>` bằng username GitHub của bạn. Xác nhận clone thành công bằng cách liệt kê file ở thư mục gốc:
 
-Bố cục repository:
+```bash
+ls -la
+```
+
+### 5.4.1.2 Xem cấu trúc project
+
+Bố cục repository được sắp xếp để backend, frontend, và công cụ triển khai nằm cạnh nhau:
 
 ```
 Enterprise-Document-Collaboration-Platform/
 ├── backend/
 │   ├── pom.xml                    # Maven build (Java 17)
 │   ├── template.yaml              # AWS SAM - infrastructure as code
-│   └── src/main/java/com/edms/    # Backend Spring Boot
+│   ├── src/main/java/com/edms/    # Backend Spring Boot
 │   └── src/main/resources/        # config + Flyway migrations + seed data
 ├── frontend/
 │   └── src/                       # React 18 SPA
@@ -34,15 +42,34 @@ Enterprise-Document-Collaboration-Platform/
 
 ![Figure 14. Cấu trúc project](/images/5-Workshop/5.4-Edms-deployment/project-structure.png)
 
-#### 5.4.1.3 Build backend
+Các file quan trọng cần nhớ:
 
-Build fat jar backend ở local để xác minh biên dịch:
++ `backend/pom.xml` — khai báo Maven build cho **Java 17** và tạo ra fat jar.
++ `backend/template.yaml` — template **AWS SAM** định nghĩa toàn bộ tài nguyên AWS (Lambda, API Gateway, Step Functions, SNS).
++ `.github/workflows/deploy.yml` — **CI/CD pipeline** chạy trên GitHub Actions.
++ `.env` — cấu hình local; file này được **gitignore** và không bao giờ đẩy lên.
+
+### 5.4.1.3 Build fat jar backend ở local
+
+Xác minh backend biên dịch được trước khi đụng vào AWS. Từ thư mục gốc:
 
 ```bash
 cd backend
 mvn clean package -DskipTests
 ```
 
-File jar `backend-java-1.0.0-SNAPSHOT.jar` là thứ được deploy lên Lambda.
+Lệnh này tạo một **fat jar** duy nhất ở `backend/target/`:
 
-> **Ghi chú:** Backend là một **monolith** Spring Boot đóng gói thành một Lambda duy nhất. `template.yaml` định nghĩa cách nó được deploy.
+```
+backend/target/backend-java-1.0.0-SNAPSHOT.jar
+```
+
+Tên jar rất quan trọng: đây là artifact mà AWS SAM đóng gói và deploy thành một hàm Lambda.
+
+### 5.4.1.4 Hiểu cách monolith ánh xạ sang Lambda
+
+Backend là một **monolith**: một ứng dụng Spring Boot chứa toàn bộ REST controllers, services, repositories, và logic xử lý phê duyệt. Nó không được tách thành nhiều hàm nhỏ. Thay vào đó, toàn bộ ứng dụng được bọc bởi một Lambda **handler** duy nhất (`StreamLambdaHandler` hoặc `RequestHandler`) mà AWS SAM gắn vào API Gateway.
+
+> **Ghi chú:** Đánh đổi "serverless monolith" này là chủ ý cho workshop. Nó giữ cho việc deploy đơn giản (một Lambda) trong khi vẫn có một nguồn sự thật duy nhất cho backend. `template.yaml` định nghĩa cách jar được chuyển thành một hàm Lambda.
+
+![Figure 15. Ánh xạ Backend sang Lambda](/images/5-Workshop/5.4-Edms-deployment/backend-to-lambda.png)

@@ -6,17 +6,26 @@ chapter : false
 pre : " <b> 5.4.2 </b> "
 ---
 
-CI/CD pipeline được định nghĩa trong `.github/workflows/deploy.yml`. Nó chạy mỗi lần push lên nhánh `main`.
+CI/CD pipeline được định nghĩa trong `.github/workflows/deploy.yml`. Nó chạy mỗi lần push lên nhánh `main` và deploy EDMS lên AWS bằng **OIDC** — không lưu access key dài hạn nào trong GitHub.
 
-#### 5.4.2.1 Tổng quan workflow
+### 5.4.2.1 Tổng quan workflow
 
-Workflow có ba job:
+Workflow gồm ba job chạy tuần tự (job deploy chờ hai job đầu tiên):
 
-1. `test-backend` — chạy `mvn test`
-2. `build-frontend` — chạy `npm ci && npm run build`
-3. `deploy` — xác thực qua OIDC và chạy `sam deploy`
+1. `test-backend` — chạy `mvn test` để kiểm tra các unit test Java.
+2. `build-frontend` — chạy `npm ci && npm run build` để biên dịch SPA React.
+3. `deploy` — xác thực AWS qua OIDC và chạy `sam deploy`.
 
-#### 5.4.2.2 File deploy.yml
+```
+push lên main
+   → test-backend
+   → build-frontend
+   → deploy (OIDC + SAM)   [chờ cả hai]
+```
+
+### 5.4.2.2 File deploy.yml
+
+Tạo `.github/workflows/deploy.yml` với nội dung sau:
 
 ```yaml
 name: EDMS CI/CD
@@ -24,6 +33,7 @@ name: EDMS CI/CD
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   id-token: write   # cần cho OIDC
@@ -74,4 +84,24 @@ jobs:
             --parameter-overrides "CognitoUserPoolId=${{ secrets.COGNITO_USER_POOL_ID }} CognitoClientId=${{ secrets.COGNITO_CLIENT_ID }} AuroraEndpoint=${{ secrets.AURORA_ENDPOINT }} S3BucketName=${{ secrets.AWS_S3_BUCKET }} DbUserName=${{ secrets.DB_USER_AWS }} DbUserPass=${{ secrets.DB_PASS_AWS }} SnsTopicArn=${{ secrets.SNS_TOPIC_ARN }} BackendLambdaArn=${{ secrets.BACKEND_LAMBDA_ARN }}"
 ```
 
-> **Điểm mấu chốt:** Job deploy dùng **OIDC** (`configure-aws-credentials` với `role-to-assume`) — không lưu AWS key dài hạn trong GitHub.
+### 5.4.2.3 Xác thực OIDC hoạt động thế nào
+
+Job deploy **không nhận** AWS credentials tĩnh:
+
+1. Runner yêu cầu một **ID token** OIDC từ GitHub (lý do cần `permissions.id-token: write`).
+2. `configure-aws-credentials` gọi `sts:AssumeRoleWithWebIdentity` với token đó, giả định vai trò trong `AWS_DEPLOY_ROLE_ARN`.
+3. AWS kiểm tra claim `sub` của token đối chiếu với trust policy trong IAM role.
+4. Credentials ngắn hạn, giới hạn được trả về và chỉ dùng trong thời gian job chạy.
+
+> **Điểm mấu chốt:** Vì vai trò được giả định qua OIDC, không có secret access key nào được lưu trong GitHub — một best practice bảo mật.
+
+### 5.4.2.4 Tham số overrides
+
+Danh sách `--parameter-overrides` truyền các giá trị theo môi trường vào template SAM. Mỗi giá trị được đọc từ một GitHub **secret** tại thời điểm deploy:
+
++ `CognitoUserPoolId`, `CognitoClientId` — xác thực (từ 5.3.4).
++ `AuroraEndpoint`, `DbUserName`, `DbUserPass` — kết nối Aurora database (từ 5.3.2).
++ `S3BucketName` — bucket lưu file (từ 5.3.1).
++ `SnsTopicArn`, `BackendLambdaArn` — tạo sau ở 5.4.8 / 5.4.12.
+
+> **Ghi chú:** Toàn bộ secret này được khai báo ở mục 5.4.5. Nếu thiếu một secret, bước SAM deploy sẽ fail với lỗi thay thế (substitution error).
