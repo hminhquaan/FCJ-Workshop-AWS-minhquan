@@ -40,7 +40,6 @@ Enterprise-Document-Collaboration-Platform/
 └── .env                           # local-only config (gitignored)
 ```
 
-![Figure 14. Project structure](/images/5-Workshop/5.4-Edms-deployment/project-structure.png)
 
 Key files to remember:
 

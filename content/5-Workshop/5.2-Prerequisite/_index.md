@@ -31,7 +31,6 @@ cloudformation:CreateStack, cloudformation:UpdateStack, cloudformation:DeleteSta
 amplify:CreateApp, amplify:CreateBranch
 ```
 
-![IAM permissions](/images/5-Workshop/5.2-Prerequisite/iam.png)
 
 > **Best practice:** Do **not** use the AWS root account. Create an IAM user for yourself and grant only the permissions you need (least-privilege).
 
@@ -47,7 +46,6 @@ The EDMS backend is a Spring Boot (Java 17) project deployed via **AWS SAM** and
 - **VS Code** (recommended IDE).
 - **Git** + a **GitHub** account.
 
-![Tools](/images/5-Workshop/5.2-Prerequisite/tools.png)
 
 ### 5.2.4 Source code
 
@@ -66,4 +64,3 @@ frontend/      React 18 SPA
 .github/       GitHub Actions CI/CD workflow
 ```
 
-![Repo](/images/5-Workshop/5.2-Prerequisite/repo.png)

@@ -39,7 +39,6 @@ An API Gateway API needs to be **deployed to a stage** before it has a usable UR
 https://xxxx.execute-api.ap-southeast-1.amazonaws.com/Prod
 ```
 
-![Figure 35. Invoke URL](/images/5-Workshop/5.4-Edms-deployment/invoke-url.png)
 
 2. Copy this URL — it is the public entry point for the whole backend.
 

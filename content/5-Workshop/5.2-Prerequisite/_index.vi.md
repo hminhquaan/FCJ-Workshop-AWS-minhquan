@@ -31,7 +31,6 @@ cloudformation:CreateStack, cloudformation:UpdateStack, cloudformation:DeleteSta
 amplify:CreateApp, amplify:CreateBranch
 ```
 
-![IAM permissions](/images/5-Workshop/5.2-Prerequisite/iam.png)
 
 > **Thực hành tốt:** **Không** dùng tài khoản root AWS. Tạo IAM user riêng và chỉ cấp những quyền cần thiết (least-privilege).
 
@@ -47,7 +46,6 @@ Backend EDMS là project Spring Boot (Java 17) deploy qua **AWS SAM** và **GitH
 - **VS Code** (IDE khuyến nghị).
 - **Git** + tài khoản **GitHub**.
 
-![Tools](/images/5-Workshop/5.2-Prerequisite/tools.png)
 
 ### 5.2.4 Mã nguồn
 
@@ -66,4 +64,3 @@ frontend/      React 18 SPA
 .github/       GitHub Actions CI/CD workflow
 ```
 
-![Repo](/images/5-Workshop/5.2-Prerequisite/repo.png)

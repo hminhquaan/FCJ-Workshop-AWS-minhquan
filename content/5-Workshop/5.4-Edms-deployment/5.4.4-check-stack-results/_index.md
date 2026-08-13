@@ -35,7 +35,6 @@ After the stack is created, verify that the resources exist and retrieve the **d
 arn:aws:iam::<account-id>:role/github-actions-deploy-role
 ```
 
-![Figure 18. Stack outputs](/images/5-Workshop/5.4-Edms-deployment/stack-outputs.png)
 
 3. Keep this ARN handy — you will store it as the `AWS_DEPLOY_ROLE_ARN` secret on GitHub in the next section.
 

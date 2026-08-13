@@ -30,7 +30,6 @@ curl -X POST https://<invoke-url>/auth/login \
 
 2. A successful response returns a **token** and the **user's role** (e.g. `ADMIN`).
 
-![Figure 36. Login test](/images/5-Workshop/5.4-Edms-deployment/login-test.png)
 
 > **Note:** Use the actual temporary password you set in Cognito. If the account requires a password change, run the change-password flow first.
 

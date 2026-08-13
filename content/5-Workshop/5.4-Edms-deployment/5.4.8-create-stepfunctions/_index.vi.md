@@ -47,7 +47,6 @@ CaptureToken (waitForTaskToken)  ── chờ vô hạn
    → NotifyApproved / NotifyRejected  ── publish lên SNS
 ```
 
-![Figure 24. Luồng state machine](/images/5-Workshop/5.4-Edms-deployment/statemachine.png)
 
 ### 5.4.8.4 Định nghĩa ASL
 

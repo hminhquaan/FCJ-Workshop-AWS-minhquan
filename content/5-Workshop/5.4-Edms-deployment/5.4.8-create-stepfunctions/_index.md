@@ -47,7 +47,6 @@ CaptureToken (waitForTaskToken)  ── waits indefinitely
    → NotifyApproved / NotifyRejected  ── publish to SNS
 ```
 
-![Figure 24. State machine flow](/images/5-Workshop/5.4-Edms-deployment/statemachine.png)
 
 ### 5.4.8.4 The ASL definition
 

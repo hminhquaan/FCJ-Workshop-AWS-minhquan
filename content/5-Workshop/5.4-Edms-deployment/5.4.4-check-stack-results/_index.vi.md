@@ -35,7 +35,6 @@ Sau khi stack được tạo, xác minh các tài nguyên tồn tại và lấy 
 arn:aws:iam::<account-id>:role/github-actions-deploy-role
 ```
 
-![Figure 18. Stack outputs](/images/5-Workshop/5.4-Edms-deployment/stack-outputs.png)
 
 3. Giữ ARN này — bạn sẽ lưu nó làm secret `AWS_DEPLOY_ROLE_ARN` trên GitHub ở mục tiếp theo.
 

@@ -40,7 +40,6 @@ Enterprise-Document-Collaboration-Platform/
 └── .env                           # config local-only (gitignored)
 ```
 
-![Figure 14. Cấu trúc project](/images/5-Workshop/5.4-Edms-deployment/project-structure.png)
 
 Các file quan trọng cần nhớ:
 

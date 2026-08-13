@@ -39,7 +39,6 @@ Một API Gateway cần được **deploy lên một stage** trước khi có UR
 https://xxxx.execute-api.ap-southeast-1.amazonaws.com/Prod
 ```
 
-![Figure 35. Invoke URL](/images/5-Workshop/5.4-Edms-deployment/invoke-url.png)
 
 2. Sao chép URL này — nó là điểm vào công khai cho toàn bộ backend.
 

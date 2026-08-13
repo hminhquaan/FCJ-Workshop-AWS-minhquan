@@ -30,7 +30,6 @@ curl -X POST https://<invoke-url>/auth/login \
 
 2. Phản hồi thành công trả về một **token** và **vai trò** của người dùng (ví dụ `ADMIN`).
 
-![Figure 36. Test đăng nhập](/images/5-Workshop/5.4-Edms-deployment/login-test.png)
 
 > **Ghi chú:** Dùng đúng mật khẩu tạm bạn đặt trong Cognito. Nếu tài khoản yêu cầu đổi mật khẩu, hãy chạy flow change-password trước.
 
