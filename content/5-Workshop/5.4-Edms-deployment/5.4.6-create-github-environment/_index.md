@@ -13,8 +13,6 @@ A **GitHub Environment** groups environment-specific settings and can require **
 1. Open your repository on GitHub → **Settings** → **Environments**.
 2. Click **New environment**, name it `production`, and click **Configure environment**.
 
-![Figure 20. Create environment](/images/5-Workshop/5.4-Edms-deployment/environment.png)
-
 3. Optionally, add **required reviewers** so that deploys to production need manual approval.
 
 #### 5.4.6.2 Reference the environment in the workflow

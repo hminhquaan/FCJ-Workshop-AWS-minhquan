@@ -15,14 +15,10 @@ Because this workshop builds several AWS services, it is important to monitor an
 3. Set an **alert threshold** at 80% and an email to notify.
 4. Click **Create budget**.
 
-![Figure 45. Budget](/images/5-Workshop/5.5-Edms-operations/budget.png)
-
 #### 5.5.4.2 Use Cost Explorer
 
 1. Open **Billing** → **Cost Explorer**.
 2. Group by **Service** to see which service (e.g. RDS/Aurora, Lambda, API Gateway) costs the most.
-
-![Figure 46. Cost Explorer](/images/5-Workshop/5.5-Edms-operations/cost-explorer.png)
 
 > **Tip:** In this architecture, **Aurora** is the main cost driver. Stop or delete it when not in use.
 
@@ -34,5 +30,3 @@ Create a CloudWatch alarm on an expensive metric, for example a **5XX error** th
 2. Select the metric `AWS/ApiGateway` → `5XXError` → your API.
 3. Set the threshold (e.g. > 0 for 1 datapoint) and the action (SNS topic).
 4. Click **Create alarm**.
-
-![Figure 47. Alarm](/images/5-Workshop/5.5-Edms-operations/alarm.png)

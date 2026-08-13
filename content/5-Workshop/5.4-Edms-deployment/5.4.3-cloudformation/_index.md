@@ -52,6 +52,4 @@ Outputs:
 3. **Stack name:** `edms-iam-stack`.
 4. Acknowledge that IAM resources will be created, then click **Create stack**.
 
-![Figure 16. Create stack](/images/5-Workshop/5.4-Edms-deployment/create-stack.png)
-
 > **Note:** Granting `PowerUserAccess` + `IAMFullAccess` to the deploy role is convenient for this workshop. In production, restrict it to the exact actions the pipeline needs.

@@ -10,30 +10,20 @@ pre: " <b> 1. </b> "
 ⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
 {{% /notice %}}
 
-**On this page**, you will need to introduce your worklog. **How** did you complete it? How many weeks did you take to complete the program? **What** did you do in those weeks?
+This worklog records my internship at **Amazon Web Services Vietnam** (Workforce Bootcamp - First Cloud AI Journey), from **22/06/2026 to 15/08/2026** (8 weeks). Over these weeks I learned AWS, then designed, built, and deployed the **Enterprise Document Collaboration Platform (EDMS)** on AWS.
 
-Typically, and as a standard, a worklog is carried out over about 3 months (throughout the internship period) with weekly contents as follows:
+**Week 1:** [Getting familiar with AWS and basic services](1.1-Week1/)
 
-**Week 1:** [Getting familiar with AWS and basic AWS services](1.1-week1/)
+**Week 2:** [Working with S3, IAM, and version control](1.2-Week2/)
 
-**Week 2:** [Doing task A...](1.2-week2/)
+**Week 3:** [Designing the EDMS architecture & preparing data model](1.3-Week3/)
 
-**Week 3:** [Doing task B...](1.3-week3/)
+**Week 4:** [Building the Spring Boot backend core](1.4-Week4/)
 
-**Week 4:** [Doing task C...](1.4-week4/)
+**Week 5:** [Advanced backend: permissions, versions, search, share](1.5-Week5/)
 
-**Week 5:** [Doing task D...](1.5-week5/)
+**Week 6:** [Approval workflow with Step Functions & SNS](1.6-Week6/)
 
-**Week 6:** [Doing task E...](1.6-week6/)
+**Week 7:** [CI/CD with GitHub Actions & SAM, deploying backend](1.7-Week7/)
 
-**Week 7:** [Doing task G...](1.7-week7/)
-
-**Week 8:** [Doing task H...](1.8-week8/)
-
-**Week 9:** [Doing task I...](1.9-week9/)
-
-**Week 10:** [Doing task L...](1.10-week10/)
-
-**Week 11:** [Doing task M...](1.11-week11/)
-
-**Week 12:** [Doing task N...](1.12-week12/)
+**Week 8:** [Hosting frontend on Amplify & end-to-end testing](1.8-Week8/)

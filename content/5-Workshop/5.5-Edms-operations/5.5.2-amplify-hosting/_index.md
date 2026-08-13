@@ -47,8 +47,6 @@ REACT_APP_COGNITO_CLIENT_ID=<client-id>
 REACT_APP_COGNITO_REGION=ap-southeast-1
 ```
 
-![Figure 41. Amplify env](/images/5-Workshop/5.5-Edms-operations/amplify-env.png)
-
 #### 5.5.2.4 Deploy
 
 1. Click **Save and deploy**.

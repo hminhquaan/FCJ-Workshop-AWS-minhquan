@@ -29,6 +29,4 @@ fields @timestamp, @message
 | limit 20
 ```
 
-![Figure 49. Logs Insights](/images/5-Workshop/5.5-Edms-operations/logs-insights.png)
-
 > **Ghi chú:** Truy vấn log giúp bạn hiểu vì sao một request thất bại, ví dụ token Cognito không hợp lệ hoặc lỗi kết nối database.

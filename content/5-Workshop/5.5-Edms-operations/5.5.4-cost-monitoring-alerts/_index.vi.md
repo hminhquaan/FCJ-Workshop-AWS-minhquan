@@ -15,14 +15,10 @@ Vì workshop này xây dựng nhiều dịch vụ AWS, việc giám sát và ki�
 3. Đặt **alert threshold** ở 80% và một email để thông báo.
 4. Bấm **Create budget**.
 
-![Figure 45. Budget](/images/5-Workshop/5.5-Edms-operations/budget.png)
-
 #### 5.5.4.2 Dùng Cost Explorer
 
 1. Mở **Billing** → **Cost Explorer**.
 2. Group by **Service** để xem dịch vụ nào (ví dụ RDS/Aurora, Lambda, API Gateway) tốn nhiều nhất.
-
-![Figure 46. Cost Explorer](/images/5-Workshop/5.5-Edms-operations/cost-explorer.png)
 
 > **Mẹo:** Trong kiến trúc này, **Aurora** là nguồn chi phí chính. Hãy stop hoặc xóa nó khi không dùng.
 
@@ -34,5 +30,3 @@ Tạo CloudWatch alarm trên một metric, ví dụ ngưỡng **5XX error**:
 2. Chọn metric `AWS/ApiGateway` → `5XXError` → API của bạn.
 3. Đặt ngưỡng (ví dụ > 0 cho 1 datapoint) và action (SNS topic).
 4. Bấm **Create alarm**.
-
-![Figure 47. Alarm](/images/5-Workshop/5.5-Edms-operations/alarm.png)

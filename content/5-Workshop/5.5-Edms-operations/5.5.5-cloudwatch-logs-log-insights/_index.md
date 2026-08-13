@@ -29,6 +29,4 @@ fields @timestamp, @message
 | limit 20
 ```
 
-![Figure 49. Logs Insights](/images/5-Workshop/5.5-Edms-operations/logs-insights.png)
-
 > **Note:** Querying logs helps you understand why a request failed, e.g. an invalid Cognito token or a database connection error.

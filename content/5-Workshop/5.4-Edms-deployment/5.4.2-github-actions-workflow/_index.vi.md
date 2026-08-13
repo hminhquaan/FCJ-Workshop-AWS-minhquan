@@ -74,6 +74,4 @@ jobs:
             --parameter-overrides "CognitoUserPoolId=${{ secrets.COGNITO_USER_POOL_ID }} CognitoClientId=${{ secrets.COGNITO_CLIENT_ID }} AuroraEndpoint=${{ secrets.AURORA_ENDPOINT }} S3BucketName=${{ secrets.AWS_S3_BUCKET }} DbUserName=${{ secrets.DB_USER_AWS }} DbUserPass=${{ secrets.DB_PASS_AWS }} SnsTopicArn=${{ secrets.SNS_TOPIC_ARN }} BackendLambdaArn=${{ secrets.BACKEND_LAMBDA_ARN }}"
 ```
 
-![Figure 15. File workflow](/images/5-Workshop/5.4-Edms-deployment/workflow.png)
-
 > **Điểm mấu chốt:** Job deploy dùng **OIDC** (`configure-aws-credentials` với `role-to-assume`) — không lưu AWS key dài hạn trong GitHub.
