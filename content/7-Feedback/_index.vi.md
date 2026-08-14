@@ -1,5 +1,5 @@
 ---
-title: "Chia sẻ và Phản hồi"
+title: "Chia sẻ, đóng góp ý kiến"
 date: 2024-01-01
 weight: 7
 chapter: false
@@ -28,7 +28,7 @@ Công ty cung cấp trợ cấp thực tập và có giờ làm việc linh ho�
 
 ---
 
-### Suy ngẫm cá nhân sau kỳ thực tập
+### Cảm nhận cá nhân sau quá trình thực tập
 
 Tôi cảm thấy chương trình có một lộ trình học tập rõ ràng và sự hỗ trợ tận tâm từ đội ngũ mentor. Có nhiều buổi chia sẻ từ các Cloud Engineers và Solution Architects làm việc tại doanh nghiệp, mang lại rất nhiều kiến thức và kinh nghiệm thực tế cho sinh viên.
 
